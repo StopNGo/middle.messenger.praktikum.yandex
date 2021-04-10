@@ -106,7 +106,11 @@ export default class Blockator {
         this.eventBus().emit(Blockator.EVENTS.FLOW_RENDER);
     }
 
-    // Может переопределять пользователь, необязательно трогать
+    /**
+     * Метод для переопределения приватного метода обновления блока
+     *
+     * @memberof Blockator
+     */
     componentDidUpdate() {}
 
     /**
