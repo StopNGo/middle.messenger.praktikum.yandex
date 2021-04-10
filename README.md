@@ -45,7 +45,7 @@ https://yappi-chat.netlify.app/
 - `npm build` — сборка стабильной версии.
 
 ------------
-####Ссылка на Pull Request "Sprint 2":
+#### Ссылка на Pull Request "Sprint 2":
 
 https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/1
 
