@@ -1,0 +1,34 @@
+
+.main-window--error-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.error-page {
+    text-align: center;
+}
+
+.error-page__content {
+    color: var(--color-bg-invert);
+}
+
+.error-page__error-number {
+    font-size: 96px;
+}
+
+.error-page__error-text {
+    font-size: var(--font-size-small);
+}
+
+.error-page__backlink {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.error-page__backlink a {
+    color: var(--color-accent);
+    font-size: var(--font-size-small);
+}

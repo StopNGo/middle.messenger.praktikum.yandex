@@ -1,0 +1,18 @@
+.chat-current {
+    flex: 1 0 0;
+    padding-left: 30px;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-current__name {
+    color: var(--color-bg-invert);
+}
+
+.chat-current__messages {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: auto;
+    overflow-y: scroll;
+    padding: 0 10px 30px 30px;
+}

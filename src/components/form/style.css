@@ -1,0 +1,39 @@
+.form {
+    background-color: var(--color-dimmed);
+    border-radius: var(--border-radius);
+    min-width: 410px;
+    box-shadow: var(--shadow-blur);
+    padding: 30px;
+}
+
+.form__title {
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+.form__button-wrapper {
+    text-align: center;
+    height: 70px;
+    margin-top: 50px;
+}
+
+.form__aditional-link {
+    display: block;
+    font-size: var(--font-size-small);
+    text-align: center;
+    margin: 20px 0;
+}
+
+.form-actions__action {
+    padding: 20px 0 0;
+}
+
+.form-actions__action,
+.form-actions__action a {
+    color: var(--color-accent-light);
+}
+
+.form-actions__action--dimmed,
+.form-actions__action--dimmed a {
+    color: var(--color-text-dimmed);
+}

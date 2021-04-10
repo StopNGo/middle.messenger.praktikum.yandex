@@ -1,0 +1,51 @@
+.profile-badge {
+    width: 110px;
+    height: 110px;
+    position: absolute;
+    top: 60px;
+    right: 60px;
+}
+
+.profile-badge__avatar {
+    width: 100%;
+    height: 100%;
+    border-radius: var(--border-radius);
+    background-color: var(--color-bg-invert);
+    overflow: hidden;
+}
+
+.profile-badge__avatar img {
+    object-fit: cover;
+    width: 100%;
+}
+
+.profile-badge__profile-menu-button {
+    border: none;
+    color: var(--color-accent);
+    background-color: transparent;
+    box-shadow: none;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+    outline: none;
+    position: absolute;
+    right: 5px;
+    top: 10px;
+    padding: 0;
+}
+
+.profile-badge__profile-menu-button:hover,
+.profile-badge__profile-menu-button:active,
+.profile-badge__profile-menu-button:focus,
+.profile-badge__profile-menu-button:active:focus,
+.profile-badge__profile-menu-button:hover:focus {
+    background: none;
+    box-shadow: none;
+}
+
+.profile-badge__profile-menu-button::after {
+    content: var(--icon-menu-dots);
+    font-family: var(--font-icons);
+    font-size: 24px;
+    text-shadow: 1px 1px 0 #ffffff;
+}

@@ -1,0 +1,6 @@
+{
+    "main_window_classes": "main-window--login",
+    "class": "login-screen",
+    "test": "test",
+    "counter": 0
+}

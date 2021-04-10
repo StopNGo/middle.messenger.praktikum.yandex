@@ -1,0 +1,16 @@
+.main-window {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    padding: 30px;
+    position: relative;
+}
+
+.main-window--login {
+    justify-content: center;
+    align-items: center;
+}
+
+.main-window--chat > div {
+    display: flex;
+}

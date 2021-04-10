@@ -1,0 +1,28 @@
+{
+    "form_body": {
+        "class": "login-form",
+        "title": "Вход",
+        "submit_button_link": "chat.html",
+        "submit_button_text": "Войти",
+        "additional_link": "register.html",
+        "additional_link_text": "Нет профиля?"
+    },
+    "fields": [
+        {
+            "class": "login-form__login",
+            "label": "Логин",
+            "data_name": "login",
+            "type": "text",
+            "placeholder": "Введите свой логин",
+            "required": "required"
+        },
+        {
+            "class": "login-form__password",
+            "label": "Пароль",
+            "data_name": "password",
+            "type": "password",
+            "placeholder": "Введите свой пароль",
+            "required": "required"
+        }
+    ]
+}

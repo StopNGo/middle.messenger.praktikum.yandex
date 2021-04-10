@@ -1,0 +1,50 @@
+{
+    "name": "yappi-chat",
+    "version": "0.0.1",
+    "description": "",
+    "engines": {
+        "node": ">=12"
+    },
+    "main": "main.js",
+    "scripts": {
+        "build": "parcel build static/login.html --no-cache --public-url .",
+        "start": "parcel static/login.html -p 3000 --no-cache",
+        "server": "node src/modules/server/server.js"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "parcelCleanPaths": [
+        "dist",
+        ".cache"
+    ],
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^4.21.0",
+        "@typescript-eslint/parser": "^4.21.0",
+        "eslint": "^7.23.0",
+        "eslint-config-standard-with-typescript": "^20.0.0",
+        "eslint-config-xo": "^0.35.0",
+        "eslint-plugin-import": "^2.22.1",
+        "eslint-plugin-node": "^11.1.0",
+        "eslint-plugin-promise": "^4.3.1",
+        "express": "^4.17.1",
+        "is-svg": ">=3.0.0",
+        "parcel-bundler": "^1.12.4",
+        "parcel-plugin-clean-easy": "^1.0.2",
+        "parcel-plugin-static-files-copy": "^2.6.0",
+        "prettier-eslint": "^12.0.0",
+        "stylelint": "^13.12.0",
+        "typescript": "^4.2.3"
+    },
+    "staticFiles": {
+        "staticPath": [
+            {
+                "staticPath": "./static/img",
+                "staticOutDir": "img"
+            }
+        ]
+    },
+    "dependencies": {
+        "stylelint-config-standard": "^21.0.0"
+    }
+}
