@@ -1,3 +1,6 @@
+#### Ссылка на Pull Request "Sprint 2":  
+https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/1
+
 ### Ветка, в которой делаете задания спринта, должна называться sprint_i, где i - номер спринта. Не переименовывайте её.
 
 ### Откройте pull request в ветку main из ветки, где вы разрабатывали проект, и добавьте ссылку на этот pr в README.md в ветке main. Название pull request может быть любое.
