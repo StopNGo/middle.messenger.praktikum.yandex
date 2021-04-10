@@ -47,4 +47,4 @@ https://yappi-chat.netlify.app/
 ------------
 
 Коментарии и пожелания привествуются!
-![](https://files.slack.com/files-pri/TPV9DP0N4-F01RBM20L4U/0_eb096_6cbe3db0_orig.gif)
+![](https://media3.giphy.com/media/ME8tqJAgmQSH4Uo4Lg/giphy.gif?cid=ecf05e47mtq1fec44qom1ndttyqwheefa01ujz337keulekx&rid=giphy.gif)
