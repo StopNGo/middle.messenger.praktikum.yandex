@@ -15,7 +15,7 @@ export default class EventBusator {
      * @param callback
      *
      * @returns Количество колбэк функций, привязанных к этому событию
-     * @memberof EventBustor
+     * @memberof EventBusator
      */
     on(event: string, callback: TCallback): number {
         if (!this.listeners[event]) {
@@ -32,7 +32,7 @@ export default class EventBusator {
      * @param event
      * @param callback
      *
-     * @memberof EventBustor
+     * @memberof EventBusator
      */
     off(event: string, callback: TCallback): void {
         if (!this.listeners[event]) {
@@ -53,7 +53,7 @@ export default class EventBusator {
      * @param callback
      *
      * @returns Функции, привязанные к этому событию
-     * @memberof EventBustor
+     * @memberof EventBusator
      */
     emit(event: string, ...args: []) {
         if (!this.listeners[event]) {
