@@ -43,10 +43,18 @@ export default class Blockator {
         eventBus.emit(Blockator.EVENTS.INIT);
     }
 
-    addNestedBlocksToTag(tagNameFromTemplate: string, nestedBlocks: any) {
-        nestedBlocks = this._makePropsProxy(nestedBlocks);
+    /**
+     * Привязка массива ссылок на блоки к тегу в шаблоне
+     *
+     * @param tagNameFromTemplate Тег, к которому будет привязан массив блоков
+     * @param nestedBlocks Массив ссылок на блоки
+     *
+     * @memberof Blockator
+     */
+    addNestedBlocksToTag(tagNameFromTemplate: string, nestedBlocks: [TBlockator]) {
+        let nestedBlocksProps = this._makePropsProxy(nestedBlocks);
         Object.assign(this.props[Blockator.NESTED_BLOCKS_PROPS], {
-            [tagNameFromTemplate]: nestedBlocks
+            [tagNameFromTemplate]: nestedBlocksProps
         });
         this.eventBus().emit(Blockator.EVENTS.FLOW_CDU);
     }
