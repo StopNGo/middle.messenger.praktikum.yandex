@@ -1,37 +1,37 @@
 .profile-badge {
-    width: 110px;
-    height: 110px;
     position: absolute;
     top: 60px;
     right: 60px;
+    width: 110px;
+    height: 110px;
 }
 
 .profile-badge__avatar {
+    overflow: hidden;
     width: 100%;
     height: 100%;
-    border-radius: var(--border-radius);
     background-color: var(--color-bg-invert);
-    overflow: hidden;
+    border-radius: var(--border-radius);
 }
 
 .profile-badge__avatar img {
-    object-fit: cover;
     width: 100%;
+    object-fit: cover;
 }
 
 .profile-badge__profile-menu-button {
-    border: none;
-    color: var(--color-accent);
-    background-color: transparent;
-    box-shadow: none;
+    position: absolute;
+    top: 10px;
+    right: 5px;
     width: 24px;
     height: 24px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--color-accent);
     cursor: pointer;
     outline: none;
-    position: absolute;
-    right: 5px;
-    top: 10px;
-    padding: 0;
 }
 
 .profile-badge__profile-menu-button:hover,

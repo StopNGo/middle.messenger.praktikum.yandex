@@ -1,8 +1,8 @@
 .chat-current {
-    flex: 1 0 0;
-    padding-left: 30px;
     display: flex;
+    flex: 1 0 0;
     flex-direction: column;
+    padding-left: 30px;
 }
 
 .chat-current__name {
@@ -12,7 +12,7 @@
 .chat-current__messages {
     display: flex;
     flex-direction: column-reverse;
+    padding: 0 10px 30px 30px;
     margin-top: auto;
     overflow-y: scroll;
-    padding: 0 10px 30px 30px;
 }

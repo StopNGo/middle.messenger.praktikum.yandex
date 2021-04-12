@@ -1,8 +1,8 @@
 
 .main-window--error-page {
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
 }
 
 .error-page {

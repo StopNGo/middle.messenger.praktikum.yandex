@@ -6,8 +6,8 @@ class Screen extends Blockator {
         super('screen');
     }
 
-    render() {
-        return new Templator('<div></div>').compile(this.props);
+    componentDidMount() {
+        this.tmpl = new Templator('<div></div>').compile(this.props);
     }
 
     place(query: string) {

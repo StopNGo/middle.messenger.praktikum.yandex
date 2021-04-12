@@ -1,13 +1,13 @@
 .chat-list {
     position: relative;
     display: flex;
-    flex-direction: column;
-    background-color: var(--color-dimmed);
-    border-radius: var(--border-radius);
     width: 385px;
     height: 100%;
-    box-shadow: var(--shadow-blur);
+    flex-direction: column;
     padding: 25px 0;
+    background-color: var(--color-dimmed);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-blur);
 }
 
 .chat-list__scroll-area {
@@ -16,23 +16,23 @@
 }
 
 .chat-list__search {
-    padding: 5px 30px 20px;
     position: relative;
+    padding: 5px 30px 20px;
 }
 
 .chat-list__search-button {
-    border: none;
-    color: var(--color-text-invert);
-    background-color: transparent;
-    box-shadow: none;
+    position: absolute;
+    top: 20px;
+    right: 40px;
     width: 20px;
     height: 20px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--color-text-invert);
     cursor: pointer;
     outline: none;
-    position: absolute;
-    right: 40px;
-    top: 20px;
-    padding: 0;
 }
 
 .chat-list__search-button:hover,
@@ -45,19 +45,19 @@
 }
 
 .chat-list__search-button::after {
-    content: var(--icon-search);
-    font-family: var(--font-icons);
     position: absolute;
     top: 0;
     left: 0;
+    content: var(--icon-search);
+    font-family: var(--font-icons);
 }
 
 .chat-list__add-button-wrapper {
     position: absolute;
     right: 30px;
     bottom: 30px;
-    height: 70px;
     width: 70px;
+    height: 70px;
 }
 
 .chat-list__add-button:hover {
@@ -76,8 +76,8 @@
 }
 
 .chat-current__time-separator {
-    font-size: var(--font-size-small);
-    color: var(--color-text-dimmed);
-    text-align: center;
     padding-top: 30px;
+    color: var(--color-text-dimmed);
+    font-size: var(--font-size-small);
+    text-align: center;
 }

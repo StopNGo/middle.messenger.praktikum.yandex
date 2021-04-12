@@ -1,71 +1,71 @@
 @font-face {
+    font-display: swap;
     font-family: "Montserrat";
+    font-style: normal;
+    font-weight: bold;
     src:
         url("../../static/fonts/Montserrat-Bold.woff2") format("woff2"),
         url("../../static/fonts/Montserrat-Bold.woff") format("woff");
-    font-weight: bold;
-    font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
+    font-display: swap;
     font-family: "Montserrat";
+    font-style: normal;
+    font-weight: normal;
     src:
         url("../../static/fonts/Montserrat-Regular.woff2") format("woff2"),
         url("../../static/fonts/Montserrat-Regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
+    font-display: swap;
     font-family: "Rubik";
+    font-style: normal;
+    font-weight: normal;
     src:
         url("../../static/fonts/Rubik-Regular.woff2") format("woff2"),
         url("../../static/fonts/Rubik-Regular.woff") format("woff");
-    font-weight: normal;
-    font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
+    font-display: swap;
     font-family: "Rubik";
+    font-style: italic;
+    font-weight: normal;
     src:
         url("../../static/fonts/Rubik-Italic.woff2") format("woff2"),
         url("../../static/fonts/Rubik-Italic.woff") format("woff");
-    font-weight: normal;
-    font-style: italic;
-    font-display: swap;
 }
 
 @font-face {
+    font-display: swap;
     font-family: "Rubik";
+    font-style: normal;
+    font-weight: 500;
     src:
         url("../../static/fonts/Rubik-Medium.woff2") format("woff2"),
         url("../../static/fonts/Rubik-Medium.woff") format("woff");
-    font-weight: 500;
-    font-style: normal;
-    font-display: swap;
 }
 
 @font-face {
+    font-display: swap;
     font-family: "Rubik";
+    font-style: italic;
+    font-weight: 500;
     src:
         url("../../static/fonts/Rubik-MediumItalic.woff2") format("woff2"),
         url("../../static/fonts/Rubik-MediumItalic.woff") format("woff");
-    font-weight: 500;
-    font-style: italic;
-    font-display: swap;
 }
 
 @font-face {
+    font-display: block;
     font-family: "Font Awesome";
+    font-style: normal;
+    font-weight: 900;
     src:
         url("../../static/fonts/fa-solid-900.woff2") format("woff2"),
         url("../../static/fonts/fa-solid-900.woff") format("woff");
-    font-weight: 900;
-    font-style: normal;
-    font-display: block;
 }
 
 :root {

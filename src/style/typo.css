@@ -1,7 +1,7 @@
 body {
+    color: var(--color-text);
     font-family: var(--font-regular);
     font-size: var(--font-size-regular);
-    color: var(--color-text);
 }
 
 h1,
@@ -11,8 +11,8 @@ h4,
 h5 {
     font-family: var(--font-header);
     font-weight: bold;
-    margin-block-start: 0;
     margin-block-end: 0;
+    margin-block-start: 0;
 }
 
 h1 {

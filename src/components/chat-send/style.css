@@ -1,7 +1,7 @@
 .chat-current__send-form {
+    position: relative;
     display: flex;
     align-items: center;
-    position: relative;
 }
 
 .chat-current__send-input {
@@ -10,10 +10,10 @@
 }
 
 .chat-current__send-button-wrapper {
-    flex: 0 0 90px;
-    height: 62px;
-    margin-left: 20px;
     position: relative;
+    height: 62px;
+    flex: 0 0 90px;
+    margin-left: 20px;
 }
 
 .chat-current__send-button {
@@ -26,18 +26,18 @@
 }
 
 .chat-current__attach-button {
-    border: none;
-    color: var(--color-text-invert);
-    background-color: transparent;
-    box-shadow: none;
+    position: absolute;
+    top: 18px;
+    left: 16px;
     width: 20px;
     height: 20px;
+    padding: 0;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--color-text-invert);
     cursor: pointer;
     outline: none;
-    position: absolute;
-    left: 16px;
-    top: 18px;
-    padding: 0;
 }
 
 .chat-current__attach-button:hover,
@@ -50,10 +50,10 @@
 }
 
 .chat-current__attach-button::after {
-    content: var(--icon-attach);
-    font-family: var(--font-icons);
-    font-size: 24px;
     position: absolute;
     top: 0;
     left: 0;
+    content: var(--icon-attach);
+    font-family: var(--font-icons);
+    font-size: 24px;
 }

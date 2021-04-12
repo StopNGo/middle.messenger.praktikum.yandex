@@ -3,12 +3,11 @@ import chatSendData from './data.json';
 import './style.css';
 
 import Blockator from '../../modules/blockator/blockator';
-import Templator from '../../modules/templator/templator';
 import chatSendTmpl from './layout.tmpl';
 
 class ChatSend extends Blockator {
-    constructor() {
-        super('div', chatSendData);
+    constructor(props?: {}, tmpl?: string) {
+        super('div', props, tmpl || chatSendTmpl);
     }
 
     componentDidMount() {
@@ -28,10 +27,6 @@ class ChatSend extends Blockator {
         });
     }
 
-    render() {
-        return new Templator(chatSendTmpl).compile(this.props);
-    }
-
     _addEvents() {
         const {events = {}} = this.props;
         const input: HTMLInputElement | null = this.getContent().querySelector('.chat-current__send-input');
@@ -45,7 +40,6 @@ class ChatSend extends Blockator {
             });
         }
 
-        console.log(input);
         Object.keys(events).forEach(eventName => {
             const form = this.getContent().querySelector('form');
             if (form) {

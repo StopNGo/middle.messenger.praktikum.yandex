@@ -17,9 +17,9 @@ html {
 }
 
 *::-webkit-scrollbar-thumb {
+    border: none;
     background-color: var(--color-accent-dimmed);
     border-radius: var(--border-radius);
-    border: none;
 }
 
 body {
@@ -41,59 +41,59 @@ a:hover {
 
 input {
     width: 100%;
-    background-color: var(--color-bg-invert);
     height: 50px;
-    color: var(--color-text-invert);
+    padding: 14px;
     border: none;
+    margin-bottom: 30px;
+    background-color: var(--color-bg-invert);
     border-radius: var(--border-radius-2);
     box-shadow: var(--inner-shadow-2);
-    padding: 14px;
-    margin-bottom: 30px;
+    color: var(--color-text-invert);
 }
 
 input:focus {
-    outline: none;
     box-shadow: var(--inner-shadow-2), var(--shadow-blur);
+    outline: none;
 }
 
 label {
     display: inline-block;
-    font-size: var(--font-size-small);
     padding: 0 0 5px 14px;
+    font-size: var(--font-size-small);
 }
 
 button {
     height: 62px;
-    color: var(--color-text);
-    background-color: var(--color-accent);
+    padding: 0 50px;
     border: none;
+    background-color: var(--color-accent);
     border-radius: 60px;
+    box-shadow: var(--shadow-strict);
+    color: var(--color-text);
+    cursor: pointer;
     font-size: var(--font-size-regular);
     font-weight: bold;
-    text-transform: uppercase;
-    padding: 0 50px;
-    box-shadow: var(--shadow-strict);
-    cursor: pointer;
     outline: none;
+    text-transform: uppercase;
 }
 
 .button--icon-solo {
-    padding: 0;
     width: 62px;
+    padding: 0;
 }
 
 button:hover,
 button:hover:focus {
+    margin: -2px 0 0 -2px;
     background-color: var(--color-accent-light);
     box-shadow: var(--shadow-strict-hover);
-    margin: -2px 0 0 -2px;
 }
 
 button:active,
 button:active:focus {
+    margin: 2px 0 0 2px;
     background-color: var(--color-accent-light);
     box-shadow: none;
-    margin: 2px 0 0 2px;
 }
 
 button:focus {
@@ -104,27 +104,27 @@ button:disabled,
 button[disabled],
 button:disabled:hover,
 button[disabled]:hover {
+    margin: 0;
     background-color: var(--color-bg);
     color: var(--color-dimmed);
-    margin: 0;
     cursor: default;
 }
 
 .button--link-like {
     display: inline;
     height: auto;
-    color: inherit;
-    background-color: transparent;
+    padding: 0;
     border: none;
+    background-color: transparent;
     border-radius: inherit;
+    box-shadow: none;
+    color: inherit;
+    cursor: pointer;
     font-size: inherit;
     font-weight: normal;
-    padding: 0;
-    box-shadow: none;
-    cursor: pointer;
     outline: 0;
-    text-transform: none;
     text-decoration: underline;
+    text-transform: none;
 }
 
 .button--link-like:hover {
@@ -132,9 +132,9 @@ button[disabled]:hover {
 }
 
 .button--link-like:focus {
-    box-shadow: none;
-    background-color: transparent;
     margin: 0;
+    background-color: transparent;
+    box-shadow: none;
     outline: 5px auto Highlight;
     outline: 5px auto -webkit-focus-ring-color;
 }
@@ -143,8 +143,8 @@ button[disabled]:hover {
 .button--link-like:active,
 .button--link-like:active:focus,
 .button--link-like:hover:focus {
-    box-shadow: none;
-    background-color: transparent;
     margin: 0;
+    background-color: transparent;
+    box-shadow: none;
     outline: none;
 }

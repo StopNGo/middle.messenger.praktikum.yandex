@@ -1,9 +1,9 @@
 .form {
+    min-width: 410px;
+    padding: 30px;
     background-color: var(--color-dimmed);
     border-radius: var(--border-radius);
-    min-width: 410px;
     box-shadow: var(--shadow-blur);
-    padding: 30px;
 }
 
 .form__title {
@@ -12,16 +12,16 @@
 }
 
 .form__button-wrapper {
-    text-align: center;
     height: 70px;
     margin-top: 50px;
+    text-align: center;
 }
 
 .form__aditional-link {
     display: block;
+    margin: 20px 0;
     font-size: var(--font-size-small);
     text-align: center;
-    margin: 20px 0;
 }
 
 .form-actions__action {

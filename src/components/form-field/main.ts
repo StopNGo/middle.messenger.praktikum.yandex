@@ -1,8 +1,11 @@
 import Blockator from '../../modules/blockator/blockator';
-import Templator from '../../modules/templator/templator';
 import formFieldTmpl from './layout.tmpl';
 
 class FormField extends Blockator {
+    constructor(props: {}, tmpl?: string) {
+        super('div', props, tmpl || formFieldTmpl);
+    }
+
     componentDidMount() {
         this.setProps({
             events: {
@@ -21,10 +24,6 @@ class FormField extends Blockator {
                 }
             }
         });
-    }
-
-    render() {
-        return new Templator(formFieldTmpl).compile(this.props);
     }
 
     _addEvents() {

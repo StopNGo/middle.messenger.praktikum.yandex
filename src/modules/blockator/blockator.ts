@@ -1,17 +1,20 @@
 import EventBusator, {TEventBusator} from '../event-busator/event-busator';
+import Templator from '../templator/templator';
 export type TBlockator = InstanceType<typeof Blockator>;
 interface IMeta {
     tagName: string;
     props: {};
 }
 
+enum EVENTS {
+    INIT = 'init',
+    FLOW_CDM = 'flow:component-did-mount',
+    FLOW_CDU = 'flow:component-did-update',
+    FLOW_RENDER = 'flow:render'
+}
+
 export default class Blockator {
-    static EVENTS: {[alias: string]: string} = {
-        INIT: 'init',
-        FLOW_CDM: 'flow:component-did-mount',
-        FLOW_CDU: 'flow:component-did-update',
-        FLOW_RENDER: 'flow:render'
-    };
+    static EVENTS = EVENTS;
 
     static NESTED_BLOCKS_PROPS: string = 'nestedBlocks';
 
@@ -19,23 +22,28 @@ export default class Blockator {
     private _meta: IMeta;
     eventBus: () => any;
     props: {[propName: string]: any};
+    tmpl: string;
 
     /**
      * @constructor
+     *
      * @param tagName Тег, которым будет обернут элемент
      * @param props Параметры блока
+     * @param tmpl Строка шаблона блока
      *
      * @memberof Blockator
      */
-    constructor(tagName: string = 'div', props: {} = {}) {
+    constructor(tagName: string = 'div', props: {} = {}, tmpl: string = '') {
         const eventBus: TEventBusator = new EventBusator();
-        Object.assign(props, {[Blockator.NESTED_BLOCKS_PROPS]: {}});
         this._meta = {
             tagName,
             props
         };
-
+        this.props = props;
+        this.setProps({[Blockator.NESTED_BLOCKS_PROPS]: {}});
         this.props = this._makePropsProxy(props);
+
+        this.tmpl = tmpl;
 
         this.eventBus = () => eventBus;
 
@@ -51,7 +59,7 @@ export default class Blockator {
      *
      * @memberof Blockator
      */
-    addNestedBlocksToTag(tagNameFromTemplate: string, nestedBlocks: [TBlockator]) {
+    addNestedBlocksToTag(tagNameFromTemplate: string, nestedBlocks: TBlockator[]) {
         let nestedBlocksProps = this._makePropsProxy(nestedBlocks);
         Object.assign(this.props[Blockator.NESTED_BLOCKS_PROPS], {
             [tagNameFromTemplate]: nestedBlocksProps
@@ -135,8 +143,13 @@ export default class Blockator {
     };
 
     _render() {
-        const block: string = this.render();
-        this._element.innerHTML = block;
+        const blockFromInstance: string = this.render();
+        if (this.tmpl && !blockFromInstance) {
+            this._element.innerHTML = new Templator(this.tmpl).compile(this.props);
+        } else {
+            this._element.innerHTML = blockFromInstance;
+        }
+
         this._setNestedNodes();
         this._addEvents();
     }

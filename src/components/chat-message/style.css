@@ -1,11 +1,11 @@
 .chat-message {
+    position: relative;
+    width: 80%;
+    padding: 30px;
+    margin-top: 30px;
     background-color: var(--color-dimmed);
     border-radius: var(--border-radius);
-    width: 80%;
     box-shadow: var(--shadow-blur);
-    padding: 30px;
-    position: relative;
-    margin-top: 30px;
 }
 
 .chat-message--income {
@@ -13,28 +13,28 @@
 }
 
 .chat-message__time {
-    font-size: var(--font-size-small);
     color: var(--color-text-dimmed);
+    font-size: var(--font-size-small);
 }
 
 .chat-message--income::after {
-    content: "";
     position: absolute;
-    right: 100%;
     top: 20px;
-    border-right: 20px solid var(--color-accent-dimmed);
+    right: 100%;
     border-top: 20px solid transparent;
+    border-right: 20px solid var(--color-accent-dimmed);
     border-bottom: 20px solid transparent;
+    content: "";
 }
 
 .chat-message--outcome::after {
-    content: "";
     position: absolute;
     top: 100%;
     right: 20px;
     border-top: 20px solid var(--color-dimmed);
-    border-left: 20px solid transparent;
     border-right: 20px solid transparent;
+    border-left: 20px solid transparent;
+    content: "";
 }
 
 .chat-message--outcome {

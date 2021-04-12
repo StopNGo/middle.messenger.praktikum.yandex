@@ -1,5 +1,5 @@
-let chatListTmpl = `
-<div class="error-page {{classes}}">
+let errorPageTmpl = `
+<div class="error-page">
     <div class="error-page__content">
         <h1 class="error-page__error-number">{{error_number}}</h1>
         <div class="error-page__error-text">{{error_text}}</div>
@@ -10,4 +10,4 @@ let chatListTmpl = `
 </div>
 `;
 
-export default chatListTmpl;
+export default errorPageTmpl;
