@@ -195,9 +195,13 @@ export default class Blockator {
     }
 
     protected _addEvents() {
-        const {events = {}} = this.props;
-        Object.keys(events).forEach(eventName => {
-            this._element.addEventListener(eventName, events[eventName]);
+        const {events = []} = this.props;
+        events.forEach((event: {name: string, selector: string, callback: () => any}) => {
+            const {name, selector, callback} = event;
+            const elements = this._element?.querySelectorAll(selector);
+            elements.forEach((element: HTMLElement) => {
+                element.addEventListener(name, callback);
+            });
         });
     }
 }
