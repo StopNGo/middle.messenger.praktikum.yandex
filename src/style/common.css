@@ -44,11 +44,15 @@ input {
     height: 50px;
     padding: 14px;
     border: none;
-    margin-bottom: 30px;
     background-color: var(--color-bg-invert);
     border-radius: var(--border-radius-2);
     box-shadow: var(--inner-shadow-2);
     color: var(--color-text-invert);
+}
+
+.form__input--error {
+    background-color: var(--color-accent);
+    color: var(--color-text);
 }
 
 input:focus {

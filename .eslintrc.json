@@ -22,6 +22,7 @@
       "error",
       4
     ],
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }]
+    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+    "max-depth": ["error", 5]
   }
 }

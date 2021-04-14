@@ -6,6 +6,25 @@
     box-shadow: var(--shadow-blur);
 }
 
+.form__field {
+    position: relative;
+    margin-bottom: 30px;
+}
+
+.form__field-error {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    margin-left: 14px;
+    color: var(--color-accent-light);
+    font-size: var(--font-size-small);
+    transform: translateY(120%);
+}
+
+.form__field-error--silent {
+    color: var(--color-text);
+}
+
 .form__title {
     margin-bottom: 30px;
     text-align: center;
@@ -15,6 +34,7 @@
     height: 70px;
     margin-top: 50px;
     text-align: center;
+
 }
 
 .form__aditional-link {

@@ -1,4 +1,4 @@
-import getDataFromForm from '../../modules/getdator/getdator.js';
+import getDataFromForm from '../../modules/getdator/getdator';
 
 window.onload = () => {
     const DOMstrings = {
