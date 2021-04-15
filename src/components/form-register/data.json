@@ -2,6 +2,7 @@
     "form_body": {
         "class": "register-form",
         "title": "Регистрация",
+        "submit_button_link": "chat.html",
         "submit_button_text": "Зарегистрироваться",
         "additional_link": "login.html",
         "additional_link_text": "Войти"

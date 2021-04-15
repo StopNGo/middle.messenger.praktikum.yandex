@@ -1,7 +1,6 @@
 import formData from './data.json';
 
 import './style.css';
-import './global-events.ts';
 
 import Form from '../form/main';
 import FormField from '../../components/form-field/main';
