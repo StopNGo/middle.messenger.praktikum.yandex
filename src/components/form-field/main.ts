@@ -36,6 +36,19 @@ class FormField extends Blockator {
                             }
                         }
 
+                        /**
+                         * Подсвечиваем постоянную подсказку, как ошибка
+                         */
+                        if (this.props.permanentHint) {
+                            const parent = target.parentNode;
+                            if (parent) {
+                                const span = parent.querySelector('span');
+                                if (span) {
+                                    span.classList.remove('form__field-error--silent');
+                                }
+                            }
+                        }
+
                         this.firstInput = !this.firstInput;
                     }
                 },

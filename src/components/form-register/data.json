@@ -57,7 +57,10 @@
             "data_name": "password",
             "type": "password",
             "placeholder": "Придумайте себе пароль",
-            "required": "required"
+            "required": "required",
+            "pattern": "pattern=\"(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])\\S{6,}\"",
+            "validationMessage": "Мин. 6 символов, 1 число и 1 заглавная",
+            "permanentHint": true
         },
         {
             "class": "register-form__password-repeat",
