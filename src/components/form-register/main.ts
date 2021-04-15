@@ -32,12 +32,6 @@ class FormRegister extends Form {
                             });
                         }
                     }
-                },
-                {
-                    name: 'input',
-                    selector: '.register-form__phone-input',
-                    callback: () => {
-                    }
                 }
             ]
         });
