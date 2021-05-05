@@ -3,7 +3,7 @@
 
 **(Yet Another Person to Person Interface)**
 
-![](https://img.shields.io/badge/version-0.2.0-lightgrey)
+![](https://img.shields.io/badge/version-0.3.0-lightgrey)
 ![](https://img.shields.io/badge/ES-2020-green)![node-current](https://img.shields.io/node/v/npm)  ![](https://img.shields.io/badge/parcel-1.12-green)
 ![npm type definitions](https://img.shields.io/npm/types/typescript)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b04381de-147a-42f1-bf72-eff2e6dbd7f7/deploy-status)](https://app.netlify.com/sites/yappi-chat/deploys)
@@ -46,9 +46,9 @@ https://praktikum.yandex.ru/middle-frontend/
 - Север периодически через API отдает неправильные последнее сообщение и счетчик непрочитанных сообщений. Можно исправить на стороне клиента, определяя последнее сообщение и кол-во непрочитанных (тут под вопросом) через WebSocket.
 
 ------------
-#### Ссылка на Pull Request "Sprint 2":
+#### Ссылка на Pull Request "Sprint 3:
 
-https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/1
+https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/2
 
 #### Ссылка на макет в Figma:
 
@@ -71,9 +71,9 @@ https://yappi-chat.netlify.app/
 -  `npm test` — запуск тестов.
 
 ------------
-#### Ссылка на Pull Request "Sprint 2":
+#### Ссылка на Pull Request "Sprint 3":
 
-https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/1
+https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/2
 
 ------------
 Коментарии и пожелания приветствуются!
