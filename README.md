@@ -3,7 +3,7 @@
 
 **(Yet Another Person to Person Interface)**
 
-![](https://img.shields.io/badge/version-0..0-lightgrey)
+![](https://img.shields.io/badge/version-0.3.0-lightgrey)
 ![](https://img.shields.io/badge/ES-2020-green)![node-current](https://img.shields.io/node/v/npm)  ![](https://img.shields.io/badge/parcel-1.12-green)
 ![npm type definitions](https://img.shields.io/npm/types/typescript)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b04381de-147a-42f1-bf72-eff2e6dbd7f7/deploy-status)](https://app.netlify.com/sites/yappi-chat/deploys)
@@ -42,8 +42,9 @@ https://praktikum.yandex.ru/middle-frontend/
 ------------
 #### Известные баги:
 
-Наверняка много разных, но самый заметный:
+Наверняка много разных, но самый заметные:
 - Север периодически через API отдает неправильные последнее сообщение и счетчик непрочитанных сообщений. Можно исправить на стороне клиента, определяя последнее сообщение и кол-во непрочитанных (тут под вопросом) через WebSocket.
+- Не удалост настроить Netlify для работы с мои роутером. Локальный сервер работает нормально.
 
 ------------
 #### Ссылка на Pull Request "Sprint 3:
@@ -57,6 +58,7 @@ https://www.figma.com/file/yrJkXOausM5ZgxMMwWUroi/YAPPI-chat?node-id=37%3A285&vi
 #### Ссылки на деплой ветки _sprint_3_ с этого репозитория в Netlify:
 
 https://yappi-chat.netlify.app/
+ВНИМАНИЕ! Не удалост настроить Netlify для работы с мои роутером. Локальный сервер работает нормально.
 
 
 
