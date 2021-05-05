@@ -63,8 +63,10 @@ export default class ChatCurrentController {
         const currentChat = Storator.getData('currentChat');
         const response = await this._chatsAPI.addUserToChat(currentChat, userID);
         if (response.status === 'success') {
-            console.log('Пользователь добавлен');
-            return true;
+            this.getUsersDataFromAPI(currentChat).then(() => {
+                console.log('Пользователь добавлен');
+                return true;
+            });
         }
 
         return false;
@@ -74,8 +76,10 @@ export default class ChatCurrentController {
         const currentChat = Storator.getData('currentChat');
         const response = await this._chatsAPI.deleteUserFromChat(currentChat, userID);
         if (response.status === 'success') {
-            console.log('Пользователь удален');
-            return true;
+            this.getUsersDataFromAPI(currentChat).then(() => {
+                console.log('Пользователь удален');
+                return true;
+            });
         }
 
         return false;
@@ -107,7 +111,7 @@ export default class ChatCurrentController {
 
             if (message.type === Connector.MSGTYPE.USER_CONNECTED) {
                 const users = Storator.getData('chat_users');
-                const user = users.findIndex((item: any) => (item.id === Number(message.content)));
+                const user = users.findIndex((item: any) => item.id === Number(message.content));
                 const userFirstName = users[user].first_name;
                 const userDisplayName = users[user].display_name;
                 messageClass = 'chat-message--notification';

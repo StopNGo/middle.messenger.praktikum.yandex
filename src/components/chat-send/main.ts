@@ -36,8 +36,6 @@ class ChatSend extends Blockator {
                                     input.value = '';
                                 }
                             }
-
-                            console.log('send');
                         });
                     }
                 },
