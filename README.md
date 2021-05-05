@@ -3,7 +3,7 @@
 
 **(Yet Another Person to Person Interface)**
 
-![](https://img.shields.io/badge/version-0.3.0-lightgrey)
+![](https://img.shields.io/badge/version-0..0-lightgrey)
 ![](https://img.shields.io/badge/ES-2020-green)![node-current](https://img.shields.io/node/v/npm)  ![](https://img.shields.io/badge/parcel-1.12-green)
 ![npm type definitions](https://img.shields.io/npm/types/typescript)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b04381de-147a-42f1-bf72-eff2e6dbd7f7/deploy-status)](https://app.netlify.com/sites/yappi-chat/deploys)
