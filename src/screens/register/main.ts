@@ -4,10 +4,21 @@ import Screen from '../../components/screen/main';
 import MainWindow from '../../components/main-window/main';
 import FormRegister from '../../components/form-register/main';
 
-const loginScreen = new Screen();
-const formRegister = new FormRegister();
-const mainWindow = new MainWindow(screenData);
-mainWindow.addNestedBlocksToTag('content', [formRegister]);
+class RegisterScreen extends Screen {
+    formRegister;
+    mainWindow;
 
-loginScreen.setMainWindow(mainWindow);
-loginScreen.place('body');
+    constructor() {
+        super();
+
+        this.formRegister = new FormRegister();
+        this.mainWindow = new MainWindow(screenData);
+
+        this.mainWindow.addNestedBlocksToTag('content', [this.formRegister]);
+        this.setMainWindow(this.mainWindow);
+
+        this.setScreenTitle(screenData.screen_title);
+    }
+}
+
+export default RegisterScreen;

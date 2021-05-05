@@ -1,0 +1,6 @@
+{
+    "screen_title": "Изменение пароля",
+    "main_window_classes": "main-window--password",
+    "class": "password-screen",
+    "counter": 0
+}

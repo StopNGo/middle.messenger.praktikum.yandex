@@ -7,13 +7,25 @@ import ChatCurrent from '../../components/chat-current/main';
 import ProfileBadge from '../../components/profile-badge/main';
 import chatWindowTmpl from './layout.tmpl';
 
-const chatListScreen = new Screen();
-const chatList = new ChatList();
-const chatCurrent = new ChatCurrent();
-const mainWindow = new MainWindow(screenData, chatWindowTmpl);
-mainWindow.addNestedBlocksToTag('list', [chatList]);
-mainWindow.addNestedBlocksToTag('chat', [chatCurrent]);
-mainWindow.addNestedBlocksToTag('badge', [new ProfileBadge()]);
+class ChatListScreen extends Screen {
+    chatList;
+    chatCurrent;
+    mainWindow;
 
-chatListScreen.setMainWindow(mainWindow);
-chatListScreen.place('body');
+    constructor() {
+        super();
+
+        this.chatCurrent = new ChatCurrent();
+        this.chatList = new ChatList(this.chatCurrent);
+        this.mainWindow = new MainWindow(screenData, chatWindowTmpl);
+
+        this.mainWindow.addNestedBlocksToTag('list', [this.chatList]);
+        this.mainWindow.addNestedBlocksToTag('chat', [this.chatCurrent]);
+        this.mainWindow.addNestedBlocksToTag('badge', [new ProfileBadge()]);
+        this.setMainWindow(this.mainWindow);
+
+        this.setScreenTitle(screenData.screen_title);
+    }
+}
+
+export default ChatListScreen;

@@ -22,7 +22,19 @@
       "error",
       4
     ],
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
-    "max-depth": ["error", 5]
+    "quotes": [
+      "error",
+      "single",
+      {
+        "allowTemplateLiterals": true
+      }
+    ],
+    "max-depth": [
+      "error",
+      5
+    ],
+    "no-constructor-return": "off",
+    "camelcase": "off",
+    "no-alert": "off"
   }
 }

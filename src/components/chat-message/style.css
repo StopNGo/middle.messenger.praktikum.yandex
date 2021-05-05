@@ -12,6 +12,15 @@
     background-color: var(--color-accent-dimmed);
 }
 
+.chat-message--notification {
+    margin: 30px auto;
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--color-text-dimmed);
+    font-size: var(--font-size-small);
+    text-align: center;
+}
+
 .chat-message__time {
     color: var(--color-text-dimmed);
     font-size: var(--font-size-small);

@@ -1,0 +1,16 @@
+{
+    "spec": "./src/**/*.spec.{js,ts}",
+    "require": [
+      "ts-node/register",
+      "mocha-jsdom",
+      "jsdom-global/register",
+      "ignore-styles",
+      "chai-spies"
+    ],
+    "extension": ["ts"],
+    "TS_NODE_IGNORE_DIAGNOSTICS": true,
+    "TS_NODE_COMPILER_OPTIONS": {
+        "module": "commonjs",
+        "skipDefaultLibCheck": true
+    }
+}

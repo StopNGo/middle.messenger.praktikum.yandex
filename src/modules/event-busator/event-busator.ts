@@ -1,4 +1,4 @@
-type TCallback = () => void;
+type TCallback = (args?: any) => void;
 export type TEventBusator = InstanceType<typeof EventBusator>;
 
 export default class EventBusator {

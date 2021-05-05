@@ -1,7 +1,8 @@
 {
+    "screen_title": "Страница не найдена",
     "main_window_classes": "main-window--error-page",
     "error_number": "404",
     "error_text": "страница не найдена",
-    "backlink_link": "chat.html",
+    "backlink_link": "chat",
     "backlink_text": "Вернуться к чатам"
 }

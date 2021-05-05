@@ -1,13 +1,12 @@
 import Blockator, {TBlockator} from '../../modules/blockator/blockator';
-import Templator from '../../modules/templator/templator';
+
+export type TScreen = InstanceType<typeof Screen>;
 
 class Screen extends Blockator {
-    constructor() {
-        super('screen');
-    }
+    static TITLE_SEPARATOR: string = '-';
 
-    componentDidMount() {
-        this.tmpl = new Templator('<div></div>').compile(this.props);
+    constructor() {
+        super('screen', {}, '<div></div>');
     }
 
     place(query: string) {
@@ -24,6 +23,10 @@ class Screen extends Blockator {
     setMainWindow(window: TBlockator) {
         const screenElement = this.getContent();
         screenElement.replaceChild(window.getContent(), screenElement.childNodes[0]);
+    }
+
+    setScreenTitle(title: string) {
+        document.title = `${title} ${Screen.TITLE_SEPARATOR} ${document.title}`;
     }
 }
 

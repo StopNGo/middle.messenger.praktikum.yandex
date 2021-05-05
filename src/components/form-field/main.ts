@@ -1,4 +1,5 @@
 import Blockator from '../../modules/blockator/blockator';
+import {sanitize} from '../../modules/utils/utils';
 import formFieldTmpl from './layout.tmpl';
 
 class FormField extends Blockator {
@@ -30,6 +31,12 @@ class FormField extends Blockator {
                     callback: (event: FocusEvent) => {
                         const target = event.target as HTMLInputElement;
                         if (target) {
+                            /**
+                             * Санитарная обработка на лету
+                             */
+
+                            target.value = sanitize(target.value);
+
                             if (!target.validity.valid) {
                                 target.classList.add('form__input--error');
                                 this.showValidationMessage(target, this.props.validationMessage);

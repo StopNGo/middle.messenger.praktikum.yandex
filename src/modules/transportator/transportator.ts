@@ -6,35 +6,44 @@ enum METHOD {
     DELETE = 'DELETE'
 }
 
+type XMLHttpRequestResponseType = '' | 'arraybuffer' | 'blob' | 'document' | 'json' | 'text';
+
 type Options = {
     method: METHOD;
-    data?: any;
+    credentials?: any;
+    responseType?: XMLHttpRequestResponseType;
     headers?: any;
+    data?: any;
 };
 
 export type OptionsWithoutMethod = Omit<Options, 'method'>;
 
 export default class HTTPTransportator {
     static METHOD = METHOD;
+    url: string;
 
-    get(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url, {...options, method: METHOD.GET});
+    constructor(url: string) {
+        this.url = url;
     }
 
-    put(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url, {...options, method: METHOD.PUT});
+    get(options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+        return this.request(this.url, {...options, method: METHOD.GET});
     }
 
-    post(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url, {...options, method: METHOD.POST});
+    put(options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+        return this.request(this.url, {...options, method: METHOD.PUT});
     }
 
-    patch(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url, {...options, method: METHOD.PATCH});
+    post(options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+        return this.request(this.url, {...options, method: METHOD.POST});
     }
 
-    delete(url: string, options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
-        return this.request(url, {...options, method: METHOD.DELETE});
+    patch(options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+        return this.request(this.url, {...options, method: METHOD.PATCH});
+    }
+
+    delete(options: OptionsWithoutMethod = {}): Promise<XMLHttpRequest> {
+        return this.request(this.url, {...options, method: METHOD.DELETE});
     }
 
     request(url: string, options: Options = {method: METHOD.GET}, timeout: number = 5000): Promise<XMLHttpRequest> {
@@ -42,21 +51,33 @@ export default class HTTPTransportator {
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();
+            if (method === METHOD.GET) {
+                if (data) {
+                    url += this._queryStringify(data);
+                }
+            }
+
             xhr.timeout = timeout;
             xhr.open(method, url);
 
-            if (method === METHOD.GET) {
-                url += this._queryStringify(data);
+            xhr.responseType = options.responseType ?? 'json';
+
+            if (options.credentials === 'included') {
+                xhr.withCredentials = true;
             }
 
-            for (let header of headers) {
+            for (let header in headers) {
                 if (Object.prototype.hasOwnProperty.call(headers, header)) {
                     xhr.setRequestHeader(header, headers[header]);
                 }
             }
 
             xhr.onload = function () {
-                resolve(xhr);
+                if (xhr.status >= 400) {
+                    reject(xhr.response);
+                } else {
+                    resolve(xhr.response);
+                }
             };
 
             xhr.onabort = reject;

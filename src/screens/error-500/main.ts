@@ -4,10 +4,21 @@ import Screen from '../../components/screen/main';
 import MainWindow from '../../components/main-window/main';
 import ErrorPage from '../../components/error-page/main';
 
-const errorScreen = new Screen();
-const errorPage = new ErrorPage(screenData);
-const mainWindow = new MainWindow(screenData);
-mainWindow.addNestedBlocksToTag('content', [errorPage]);
+class Error505Screen extends Screen {
+    errorPage;
+    mainWindow;
 
-errorScreen.setMainWindow(mainWindow);
-errorScreen.place('body');
+    constructor() {
+        super();
+
+        this.errorPage = new ErrorPage(screenData);
+        this.mainWindow = new MainWindow(screenData);
+
+        this.mainWindow.addNestedBlocksToTag('content', [this.errorPage]);
+        this.setMainWindow(this.mainWindow);
+
+        this.setScreenTitle(screenData.screen_title);
+    }
+}
+
+export default Error505Screen;

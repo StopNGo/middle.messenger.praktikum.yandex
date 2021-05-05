@@ -8,8 +8,9 @@
     "main": "main.js",
     "scripts": {
         "build": "parcel build static/login.html --no-cache --public-url .",
-        "start": "parcel static/login.html -p 3000 --no-cache",
-        "server": "node src/modules/server/server.js"
+        "start": "parcel static/index.html -p 3000 --no-cache",
+        "server": "node src/modules/server/server.js",
+        "test": "./node_modules/.bin/mocha"
     },
     "keywords": [],
     "author": "",
@@ -19,8 +20,17 @@
         ".cache"
     ],
     "devDependencies": {
+        "@babel/preset-env": "^7.14.1",
+        "@babel/preset-typescript": "^7.13.0",
+        "@babel/register": "^7.13.16",
+        "@peculiar/webcrypto": "^1.1.6",
+        "@types/chai": "^4.2.17",
+        "@types/jsdom": "^16.2.10",
+        "@types/mocha": "^8.2.2",
         "@typescript-eslint/eslint-plugin": "^4.21.0",
         "@typescript-eslint/parser": "^4.21.0",
+        "chai": "^4.3.4",
+        "chai-spies": "^1.0.0",
         "eslint": "^7.23.0",
         "eslint-config-standard-with-typescript": "^20.0.0",
         "eslint-config-xo": "^0.35.0",
@@ -28,7 +38,11 @@
         "eslint-plugin-node": "^11.1.0",
         "eslint-plugin-promise": "^4.3.1",
         "express": "^4.17.1",
+        "ignore-styles": "^5.0.1",
         "is-svg": ">=3.0.0",
+        "jsdom-global": "^3.0.2",
+        "mocha": "^8.3.2",
+        "mocha-jsdom": "^2.0.0",
         "parcel-bundler": "^1.12.4",
         "parcel-plugin-clean-easy": "^1.0.2",
         "parcel-plugin-static-files-copy": "^2.6.0",
@@ -36,6 +50,7 @@
         "stylelint": "^13.12.0",
         "stylelint-config-idiomatic-order": "^8.1.0",
         "stylelint-order": "^4.1.0",
+        "ts-node": "^9.1.1",
         "typescript": "^4.2.3"
     },
     "staticFiles": {
@@ -48,5 +63,8 @@
     },
     "dependencies": {
         "stylelint-config-standard": "^21.0.0"
-    }
+    },
+    "browserslist": [
+        "since 2017-06"
+    ]
 }

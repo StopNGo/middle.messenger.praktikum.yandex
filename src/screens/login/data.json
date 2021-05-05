@@ -1,4 +1,5 @@
 {
+    "screen_title": "Вход",
     "main_window_classes": "main-window--login",
     "class": "login-screen",
     "test": "test",

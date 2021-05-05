@@ -12,7 +12,7 @@
 
 .chat-list__scroll-area {
     height: 100%;
-    overflow-y: scroll;
+    overflow-y: auto;
 }
 
 .chat-list__search {

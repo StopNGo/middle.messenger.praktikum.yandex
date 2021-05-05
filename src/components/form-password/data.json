@@ -1,0 +1,41 @@
+{
+    "form_body": {
+        "class": "password-form",
+        "title": "Изменить пароль",
+        "submit_button_link": "chat",
+        "submit_button_text": "Изменить",
+        "additional_link": "profile",
+        "additional_link_text": "Назад",
+        "confirmation_text": "Пароль успешно изменен"
+    },
+    "fields": [
+        {
+            "class": "password-form__password-old",
+            "label": "Текущий пароль",
+            "data_name": "password_old",
+            "type": "password",
+            "placeholder": "Введите текущий пароль",
+            "required": "required"
+        },
+        {
+            "class": "password-form__password",
+            "label": "Новый пароль",
+            "data_name": "password",
+            "type": "password",
+            "placeholder": "Придумайте себе новый пароль",
+            "required": "required",
+            "pattern": "pattern=\"(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])\\S{6,}\"",
+            "validationMessage": "Мин. 6 символов, 1 число и 1 заглавная",
+            "permanentHint": true
+        },
+        {
+            "class": "password-form__password-repeat",
+            "label": "Пароль еще раз",
+            "data_name": "password_repeat",
+            "type": "password",
+            "placeholder": "Повторите пароль для проверки",
+            "required": "required",
+            "validationMessage": "Пароли не совпадают"
+        }
+    ]
+}

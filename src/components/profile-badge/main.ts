@@ -1,19 +1,27 @@
 import profileBadgeData from './data.json';
+import ProfileBadgeController from './controller';
 
 import './style.css';
 
 import Blockator from '../../modules/blockator/blockator';
-import Templator from '../../modules/templator/templator';
 import profileBadgeTmpl from './layout.tmpl';
 
 class ProfileBadge extends Blockator {
-    constructor(addProps?: {}) {
-        super('div', profileBadgeData.badge_body);
-        this.setProps(addProps);
+    DOMstrings: {[key: string]: string};
+    private _controller: ProfileBadgeController;
+
+    constructor() {
+        super('div', profileBadgeData.badge_body, profileBadgeTmpl);
     }
 
-    render() {
-        return new Templator(profileBadgeTmpl).compile(this.props);
+    componentDidMount() {
+        this.DOMstrings = {
+            avatar: '.profile-badge__avatar img'
+        };
+
+        this._controller = new ProfileBadgeController(this);
+
+        this._controller.setAvatar();
     }
 }
 

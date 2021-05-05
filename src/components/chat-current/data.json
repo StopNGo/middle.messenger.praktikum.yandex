@@ -1,6 +1,11 @@
 {
     "chat_body": {
-        "name": "Илья"
+        "name": "YAPPI Chat",
+        "add_user_text": "Добавить пользователя",
+        "add_prompt": "Добавление пользователя. Укажите ID пользователя:",
+        "delete_user_text": "Удалить пользователя",
+        "delete_prompt": "Удаление пользователя. Укажите ID пользователя:",
+        "user_connected_text": "К чату подключился"
     },
     "messages": [
         {

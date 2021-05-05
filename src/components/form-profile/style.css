@@ -60,6 +60,7 @@
 }
 
 .profile__avatar {
+    position: relative;
     overflow: hidden;
     width: 110px;
     height: 110px;
@@ -71,6 +72,51 @@
 .profile__avatar img {
     width: 100%;
     object-fit: cover;
+}
+
+.profile__avatar-form {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+
+.profile__avatar:hover .profile__avatar-form {
+    display: block;
+}
+
+.profile__avatar-input-bg {
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    background-color: var(--color-dimmed);
+    opacity: 0.5;
+}
+
+.profile__avatar-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    text-align: center;
+}
+
+.profile__avatar-input {
+    display: none;
+}
+
+.profile__id {
+    margin: 10px 0 20px;
+    color: var(--color-text-dimmed);
+    font-size: var(--font-size-small);
+    text-align: center;
 }
 
 .profile .form__field {

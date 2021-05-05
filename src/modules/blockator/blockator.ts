@@ -1,4 +1,5 @@
 import EventBusator, {TEventBusator} from '../event-busator/event-busator';
+import uuidator, {TUUID} from '../uuidator/uuidator';
 import Templator from '../templator/templator';
 export type TBlockator = InstanceType<typeof Blockator>;
 interface IMeta {
@@ -18,6 +19,7 @@ export default class Blockator {
 
     static NESTED_BLOCKS_PROPS: string = 'nestedBlocks';
 
+    private _id: TUUID;
     private _element: HTMLElement;
     private _meta: IMeta;
     eventBus: () => any;
@@ -39,9 +41,11 @@ export default class Blockator {
             tagName,
             props
         };
+        this._id = uuidator();
         this.props = props;
+
+        this.setProps({__id: this._id});
         this.setProps({[Blockator.NESTED_BLOCKS_PROPS]: {}});
-        this.props = this._makePropsProxy(props);
 
         this.tmpl = tmpl;
 
@@ -67,6 +71,11 @@ export default class Blockator {
         this.eventBus().emit(Blockator.EVENTS.FLOW_CDU);
     }
 
+    deleteNestedBlocksFromTag(tagNameFromTemplate: string) {
+        this.props[Blockator.NESTED_BLOCKS_PROPS][tagNameFromTemplate].length = 0;
+        this.eventBus().emit(Blockator.EVENTS.FLOW_CDU);
+    }
+
     _setNestedNodes() {
         if (this.props[Blockator.NESTED_BLOCKS_PROPS]) {
             Object.keys(this.props[Blockator.NESTED_BLOCKS_PROPS]).forEach(tag => {
@@ -85,9 +94,14 @@ export default class Blockator {
 
     private _registerEvents(eventBus: TEventBusator): void {
         eventBus.on(Blockator.EVENTS.INIT, this.init.bind(this));
+
         eventBus.on(Blockator.EVENTS.FLOW_CDM, this._componentDidMount.bind(this));
+
         eventBus.on(Blockator.EVENTS.FLOW_CDU, this._componentDidUpdate.bind(this));
+
         eventBus.on(Blockator.EVENTS.FLOW_RENDER, this._render.bind(this));
+        eventBus.on(Blockator.EVENTS.FLOW_RENDER, this._setNestedNodes.bind(this));
+        eventBus.on(Blockator.EVENTS.FLOW_RENDER, this._addEvents.bind(this));
     }
 
     private _createResources(): void {
@@ -107,6 +121,7 @@ export default class Blockator {
 
     _componentDidMount() {
         this.componentDidMount();
+        this.props = this._makePropsProxy(this.props);
         this.eventBus().emit(Blockator.EVENTS.FLOW_RENDER);
     }
 
@@ -142,6 +157,10 @@ export default class Blockator {
         Object.assign(this.props, nextProps);
     };
 
+    getThis() {
+        return this;
+    }
+
     _render() {
         const blockFromInstance: string = this.render();
         if (this.tmpl && !blockFromInstance) {
@@ -149,9 +168,6 @@ export default class Blockator {
         } else {
             this._element.innerHTML = blockFromInstance;
         }
-
-        this._setNestedNodes();
-        this._addEvents();
     }
 
     /**
@@ -203,5 +219,13 @@ export default class Blockator {
                 element.addEventListener(name, callback);
             });
         });
+    }
+
+    show() {
+        this._element.style.display = 'block';
+    }
+
+    hide() {
+        this._element.style.display = 'none';
     }
 }

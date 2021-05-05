@@ -1,6 +1,7 @@
 {
     "list_body": {
-      "search_placeholder": "Поиск"
+      "search_placeholder": "Поиск",
+      "add_text": "Введите имя чата"
     },
     "items": [
         {

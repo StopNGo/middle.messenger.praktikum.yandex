@@ -1,4 +1,5 @@
 {
+    "screen_title": "Произошла ошибка",
     "main_window_classes": "main-window--error-page",
     "error_number": "500",
     "error_text": "что-то пошло не так,<br> скоро мы все исправим",

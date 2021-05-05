@@ -9,6 +9,7 @@ let chatListItemTmpl = `
         <time class="chat-list-item__time">{{time}}</time>
         <div class="chat-list-item__counter">{{counter}}</div>
     </div>
+    <div class="chat-list-item__delete"></div>
 </div>
 `;
 
