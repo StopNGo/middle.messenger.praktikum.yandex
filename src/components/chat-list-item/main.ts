@@ -40,7 +40,7 @@ class ChatListItem extends Blockator {
                     name: 'click',
                     selector: this.DOMstrings.item,
                     callback: () => {
-                        this.chatList._chatCurrent.controller.changeChat(this.props.id);
+                        this.chatList.chatCurrent.controller.changeChat(this.props.id);
                         this._controller.setHighlighState();
                     }
                 }

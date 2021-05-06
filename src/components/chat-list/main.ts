@@ -11,14 +11,14 @@ class ChatList extends Blockator {
     DOMstrings: {[key: string]: string};
     controller: ChatListController;
     private _chatListData: any;
-    private _chatCurrent: any;
+    chatCurrent: any;
 
     constructor(chatCurrent: any, props?: {}, tmpl?: string) {
         super('div', props, tmpl || chatListTmpl);
         this.setProps(chatListData.list_body);
 
-        this._chatCurrent = chatCurrent;
-        if (this._chatCurrent) {
+        this.chatCurrent = chatCurrent;
+        if (this.chatCurrent) {
             this._chatListData = chatListData;
         }
     }

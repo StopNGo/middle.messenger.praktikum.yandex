@@ -5,7 +5,8 @@
         "add_prompt": "Добавление пользователя. Укажите ID пользователя:",
         "delete_user_text": "Удалить пользователя",
         "delete_prompt": "Удаление пользователя. Укажите ID пользователя:",
-        "user_connected_text": "К чату подключился"
+        "user_connected_text": "К чату подключился",
+        "choose_message": "Выберите чат"
     },
     "messages": [
         {

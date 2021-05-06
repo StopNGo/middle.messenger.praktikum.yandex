@@ -1,13 +1,12 @@
 import Storator from '../../modules/storator/storator';
 import {ChatsAPI, ChatData} from '../../modules/api/chats-api';
-import {TBlockator} from '../../modules/blockator/blockator';
 import ChatList from './main';
 
 export default class ChatListController {
-    private _block: TBlockator;
+    private _block: ChatList;
     private _chatsAPI: ChatsAPI;
 
-    constructor(block: TBlockator) {
+    constructor(block: ChatList) {
         this._block = block;
         this._chatsAPI = new ChatsAPI();
     }
@@ -60,6 +59,8 @@ export default class ChatListController {
             this._block.deleteNestedBlocksFromTag('items');
             let block: ChatList = this._block as ChatList;
             block.refreshList();
+            this._block.chatCurrent.clearMessages();
+            this._block.chatCurrent.showChooseBlock();
             return true;
         }
 

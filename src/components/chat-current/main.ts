@@ -3,14 +3,16 @@ import ChatCurrentController from './controller';
 
 import './style.css';
 
-import Blockator from '../../modules/blockator/blockator';
+import Blockator, {TBlockator} from '../../modules/blockator/blockator';
 import ChatSend from '../../components/chat-send/main';
 import chatCurrentTmpl from './layout.tmpl';
+import chatChooseTmpl from './layout-choose.tmpl';
 import {sanitize} from '../../modules/utils/utils';
 
 class ChatCurrent extends Blockator {
     DOMstrings: {[key: string]: string};
     controller: ChatCurrentController;
+    private _chooseBlock: TBlockator;
 
     constructor(props?: {}, tmpl?: string) {
         super('div', props, tmpl || chatCurrentTmpl);
@@ -18,9 +20,8 @@ class ChatCurrent extends Blockator {
     }
 
     componentDidMount() {
-        const chooseBlockTmpl = `<div class="chat-current__choose">{{choose}}</div>`;
-        const chooseBlock = new Blockator('div', {choose: 'Выберите чат'}, chooseBlockTmpl);
-        this.addNestedBlocksToTag('messages', [chooseBlock]);
+        this._chooseBlock = new Blockator('div', {choose_message: chatCurrentData.chat_body.choose_message}, chatChooseTmpl);
+        this.addNestedBlocksToTag('messages', [this._chooseBlock]);
         this.addNestedBlocksToTag('send', [new ChatSend(this)]);
 
         this.controller = new ChatCurrentController(this);
@@ -54,6 +55,14 @@ class ChatCurrent extends Blockator {
                 }
             ]
         });
+    }
+
+    showChooseBlock() {
+        this.addNestedBlocksToTag('messages', [this._chooseBlock]);
+    }
+
+    clearMessages() {
+        this.deleteNestedBlocksFromTag('messages');
     }
 }
 
