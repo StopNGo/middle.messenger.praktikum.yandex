@@ -11,7 +11,8 @@
         "build": "cross-env NODE_ENV=production webpack --mode production",
         "server": "node src/modules/server/server.js",
         "test": "./node_modules/.bin/mocha",
-        "check-ts": "tsc --noEmit"
+        "check-ts": "tsc --noEmit",
+        "prepare": "husky install"
     },
     "keywords": [],
     "author": "",
@@ -50,9 +51,12 @@
         "express": "4.17.1",
         "file-loader": "^6.2.0",
         "html-webpack-plugin": "^5.3.1",
+        "husky": "^6.0.0",
         "ignore-styles": "5.0.1",
         "is-svg": ">=3.0.0",
+        "jsdom": "^16.5.3",
         "jsdom-global": "3.0.2",
+        "lint-staged": "^11.0.0",
         "mini-css-extract-plugin": "^1.6.0",
         "mocha": "8.3.2",
         "mocha-jsdom": "2.0.0",
@@ -81,5 +85,9 @@
     },
     "browserslist": [
         "since 2017-06"
-    ]
+    ],
+    "lint-staged": {
+        "*.js": "eslint --cache --fix",
+        "*.css": "stylelint --fix"
+    }
 }
