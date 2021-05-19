@@ -62,6 +62,14 @@ describe('Test Routerator module', () => {
         });
     });
 
+    context('Test history navigation', () => {
+        it(`Navigate back`, () => {
+            router.back();
+            const shouldBe = '/private';
+            assert.isTrue(global.window.location.pathname === shouldBe, `Navigated to '${global.window.location.pathname}' but should be on '${shouldBe}'`);
+        });
+    });
+
     context('Test wrong page', () => {
         it(`Navigate to wrong page`, () => {
             router.go('/some-page');

@@ -1,5 +1,5 @@
 {
-    "spec": "./src/**/*.spec.{js,ts}",
+    "spec": "./src/modules/routerator/**/*.spec.{js,ts}",
     "require": [
       "ts-node/register",
       "mocha-jsdom",

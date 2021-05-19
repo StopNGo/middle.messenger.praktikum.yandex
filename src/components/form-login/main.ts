@@ -9,6 +9,12 @@ class FormLogin extends Form {
 
     constructor() {
         super(formData.form_body);
+
+        this.DOMstrings = {
+            form: '.login-form',
+            login: '.login-form__login-input',
+            password: '.login-form__password-input'
+        };
     }
 
     componentDidMount() {

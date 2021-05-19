@@ -4,7 +4,7 @@
     "target": "es2020",
     "declaration": false,
     "module": "commonjs",
-    "strictNullChecks": true,
+    "strict": true,
     "sourceMap": true,
     "resolveJsonModule": true,
     "esModuleInterop": true,
