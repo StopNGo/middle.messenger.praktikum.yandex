@@ -11,7 +11,6 @@
         "build": "cross-env NODE_ENV=production webpack --mode production",
         "server": "node src/modules/server/server.js",
         "test": "./node_modules/.bin/mocha",
-        "test:staged": "CI=true npm test",
         "check-ts": "tsc --noEmit",
         "prepare": "husky install"
     },
@@ -91,7 +90,7 @@
     "lint-staged": {
         "*.{js,ts}": [
             "eslint --cache --fix",
-            "npm run test:staged"
+            "npm run test"
         ],
         "*.css": [
             "stylelint --fix",
