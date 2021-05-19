@@ -8,8 +8,8 @@ import chatListTmpl from './layout.tmpl';
 import {sanitize} from '../../modules/utils/utils';
 
 class ChatList extends Blockator {
-    DOMstrings: {[key: string]: string};
-    controller: ChatListController;
+    DOMstrings!: {[key: string]: string};
+    controller!: ChatListController;
     private _chatListData: any;
     chatCurrent: any;
 

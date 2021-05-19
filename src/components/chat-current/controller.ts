@@ -10,7 +10,7 @@ import {sanitize} from '../../modules/utils/utils';
 export default class ChatCurrentController {
     private _block: TBlockator;
     private _chatsAPI: ChatsAPI;
-    connection: Connector;
+    connection!: Connector;
 
     constructor(block: TBlockator) {
         this._block = block;

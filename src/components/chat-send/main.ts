@@ -8,7 +8,7 @@ import {sanitize, sleep} from '../../modules/utils/utils';
 import chatSendTmpl from './layout.tmpl';
 
 class ChatSend extends Blockator {
-    DOMstrings: {[key: string]: string};
+    DOMstrings!: {[key: string]: string};
     private _controller: ChatSendController;
     chatCurrent: any;
 

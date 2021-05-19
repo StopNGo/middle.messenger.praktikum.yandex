@@ -59,11 +59,11 @@ export class Routerator {
     private static __instance: Routerator;
 
     routes: TRoute[] = [];
-    history: History;
-    _currentRoute: TRoute | null;
-    _rootQuery: string;
-    _restrictionPromise: Promise<boolean>;
-    _pathname404: string;
+    history!: History;
+    _currentRoute!: TRoute | null;
+    _rootQuery!: string;
+    _restrictionPromise!: Promise<boolean>;
+    _pathname404!: string;
 
     constructor(rootQuery: string, pathname404: string = '/404') {
         if (Routerator.__instance) {

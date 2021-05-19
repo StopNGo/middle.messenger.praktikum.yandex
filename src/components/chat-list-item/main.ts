@@ -6,9 +6,9 @@ import Blockator from '../../modules/blockator/blockator';
 import chatListItemTmpl from './layout.tmpl';
 
 class ChatListItem extends Blockator {
-    DOMstrings: {[key: string]: string};
+    DOMstrings!: {[key: string]: string};
     chatList: any;
-    private _controller: ChatListItemController;
+    private _controller!: ChatListItemController;
 
     constructor(chatList: any, props: {}, tmpl?: string) {
         super('div', props, tmpl || chatListItemTmpl);

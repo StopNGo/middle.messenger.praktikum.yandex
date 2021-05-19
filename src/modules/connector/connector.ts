@@ -81,7 +81,7 @@ export default class Connector {
 
     private onError = (event: ErrorEvent) => {
         console.error('Ошибка', event.message);
-    };
+    } ;
 
     async init() {
         try {
@@ -107,7 +107,7 @@ export default class Connector {
             this._socket.addEventListener('open', this.onOpen);
             this._socket.addEventListener('close', this.onClose);
             this._socket.addEventListener('message', this.onMessage);
-            this._socket.addEventListener('error', this.onError);
+            this._socket.addEventListener('error', this.onError as (e: Event) => void);
 
             return true;
         } catch (error) {
@@ -149,7 +149,7 @@ export default class Connector {
             this._socket.removeEventListener('open', this.onOpen);
             this._socket.removeEventListener('close', this.onClose);
             this._socket.removeEventListener('message', this.onMessage);
-            this._socket.removeEventListener('error', this.onError);
+            this._socket.removeEventListener('error', this.onError as (e: Event) => void);
             this._socket = null;
         }
     }

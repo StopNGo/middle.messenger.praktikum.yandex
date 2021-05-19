@@ -5,7 +5,7 @@ import Form from '../form/main';
 import FormField from '../form-field/main';
 
 class FormPassword extends Form {
-    DOMstrings: {[key: string]: string};
+    DOMstrings!: {[key: string]: string};
 
     constructor() {
         super(formData.form_body);

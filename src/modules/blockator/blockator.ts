@@ -20,7 +20,7 @@ export default class Blockator {
     static NESTED_BLOCKS_PROPS: string = 'nestedBlocks';
 
     private _id: TUUID;
-    private _element: HTMLElement;
+    private _element!: HTMLElement;
     private _meta: IMeta;
     eventBus: () => any;
     props: {[propName: string]: any};
@@ -214,7 +214,7 @@ export default class Blockator {
         const {events = []} = this.props;
         events.forEach((event: {name: string, selector: string, callback: () => any}) => {
             const {name, selector, callback} = event;
-            const elements = this._element?.querySelectorAll(selector);
+            const elements = this._element?.querySelectorAll<HTMLElement>(selector);
             elements.forEach((element: HTMLElement) => {
                 element.addEventListener(name, callback);
             });

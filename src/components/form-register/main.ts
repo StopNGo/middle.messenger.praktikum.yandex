@@ -8,7 +8,7 @@ import FormField from '../../components/form-field/main';
 import {RegisterData} from '../../modules/api/auth-api';
 
 class FormRegister extends Form {
-    DOMstrings: {[key: string]: string};
+    DOMstrings!: {[key: string]: string};
 
     constructor() {
         super(formData.form_body);
@@ -48,9 +48,9 @@ class FormRegister extends Form {
                     selector: this.DOMstrings.form,
                     callback: (event: InputEvent) => {
                         event.preventDefault();
-                        const dataFeilds = document.querySelectorAll(this.DOMstrings.dataField);
+                        const dataFeilds = document.querySelectorAll<HTMLInputElement>(this.DOMstrings.dataField);
                         const data: RegisterData | {[key: string]: string} = {};
-                        dataFeilds.forEach((field: HTMLInputElement) => {
+                        dataFeilds.forEach(field => {
                             const dataName = field.dataset.name;
                             if (dataName && dataName !== 'password_repeat') {
                                 data[dataName] = field.value;

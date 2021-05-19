@@ -9,8 +9,8 @@ import formTmpl from './layout.tmpl';
 import {ProfileData} from '../../modules/api/users-api';
 
 class FormRegister extends Form {
-    DOMstrings: {[key: string]: string};
-    private _controller: ProfileController;
+    DOMstrings!: {[key: string]: string};
+    private _controller!: ProfileController;
     private _formData: any;
 
     constructor() {
@@ -47,11 +47,11 @@ class FormRegister extends Form {
                         const profileForm = document.getElementById(this.DOMstrings.profileForm);
                         const changeData = document.getElementById(this.DOMstrings.changeData);
                         if (profileForm && changeData) {
-                            const dataFeilds = document.querySelectorAll(this.DOMstrings.dataField);
+                            const dataFeilds = document.querySelectorAll<HTMLInputElement>(this.DOMstrings.dataField);
                             if (dataFeilds) {
                                 if (changeData.dataset.action === 'change') {
                                     event.preventDefault();
-                                    dataFeilds.forEach((field: HTMLInputElement) => {
+                                    dataFeilds.forEach(field => {
                                         field.readOnly = false;
                                     });
                                     changeData.dataset.action = 'save';
@@ -70,7 +70,7 @@ class FormRegister extends Form {
 
                                     this._controller.changeProfile(dataOutput as ProfileData).then(res => {
                                         if (res) {
-                                            dataFeilds.forEach((field: HTMLInputElement) => {
+                                            dataFeilds.forEach(field => {
                                                 field.readOnly = true;
                                             });
                                             changeData.dataset.action = 'change';

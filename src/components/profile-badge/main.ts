@@ -7,8 +7,8 @@ import Blockator from '../../modules/blockator/blockator';
 import profileBadgeTmpl from './layout.tmpl';
 
 class ProfileBadge extends Blockator {
-    DOMstrings: {[key: string]: string};
-    private _controller: ProfileBadgeController;
+    DOMstrings!: {[key: string]: string};
+    private _controller!: ProfileBadgeController;
 
     constructor() {
         super('div', profileBadgeData.badge_body, profileBadgeTmpl);

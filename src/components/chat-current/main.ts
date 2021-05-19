@@ -10,9 +10,9 @@ import chatChooseTmpl from './layout-choose.tmpl';
 import {sanitize} from '../../modules/utils/utils';
 
 class ChatCurrent extends Blockator {
-    DOMstrings: {[key: string]: string};
-    controller: ChatCurrentController;
-    private _chooseBlock: TBlockator;
+    DOMstrings!: {[key: string]: string};
+    controller!: ChatCurrentController;
+    private _chooseBlock!: TBlockator;
 
     constructor(props?: {}, tmpl?: string) {
         super('div', props, tmpl || chatCurrentTmpl);
