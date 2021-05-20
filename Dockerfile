@@ -18,6 +18,6 @@ COPY --from=build-stage /app/dist /var/www/html
 COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
 
 EXPOSE 3000
-CMD ["nginx","-g","daemon off;"]
+CMD sed -i -e 's/$PORT/'"$PORT"'/g' /etc/nginx/nginx.conf && nginx -g 'daemon off;'
 
 
