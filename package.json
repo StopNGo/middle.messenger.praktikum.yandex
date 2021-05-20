@@ -12,7 +12,7 @@
         "server": "node src/modules/server/server.js",
         "test": "./node_modules/.bin/mocha",
         "check-ts": "tsc --noEmit",
-        "prepare": "husky install"
+        "docker": "docker-compose up -d --build"
     },
     "keywords": [],
     "author": "",

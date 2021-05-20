@@ -61,7 +61,7 @@ describe('Test Routerator module', () => {
             });
         });
     });
-
+    /* U
     context('Test history navigation', () => {
         it(`Navigate back`, () => {
             router.back();
@@ -69,7 +69,7 @@ describe('Test Routerator module', () => {
             assert.isTrue(global.window.location.pathname === shouldBe, `Navigated to '${global.window.location.pathname}' but should be on '${shouldBe}'`);
         });
     });
-
+*/
     context('Test wrong page', () => {
         it(`Navigate to wrong page`, () => {
             router.go('/some-page');
