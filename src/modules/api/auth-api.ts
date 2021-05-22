@@ -1,4 +1,3 @@
-import HTTPTransportator from '../transportator/transportator';
 import {BaseAPI, APIResponse, XHROptions} from './base-api';
 
 export type LoginData = {
@@ -31,10 +30,11 @@ export class AuthAPI extends BaseAPI {
     login(data: LoginData): Promise<APIResponse> {
         const options = {
             ...this.options,
+            path: '/auth/signin',
             data: JSON.stringify(data)
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/auth/signin`)
+        return this.transportator
             .post(options)
             .then(
                 (): APIResponse => ({
@@ -53,10 +53,11 @@ export class AuthAPI extends BaseAPI {
 
     logout(): Promise<APIResponse> {
         const options = {
-            ...this.options
+            ...this.options,
+            path: '/auth/logout'
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/auth/logout`)
+        return this.transportator
             .post(options)
             .then(
                 (): APIResponse => ({
@@ -76,10 +77,11 @@ export class AuthAPI extends BaseAPI {
     register(data: RegisterData): Promise<APIResponse> {
         const options = {
             ...this.options,
+            path: '/auth/signup',
             data: JSON.stringify(data)
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/auth/signup`)
+        return this.transportator
             .post(options)
             .then(
                 (): APIResponse => ({
@@ -98,10 +100,11 @@ export class AuthAPI extends BaseAPI {
 
     profile(): Promise<APIResponse> {
         const options = {
-            ...this.options
+            ...this.options,
+            path: '/auth/user'
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/auth/user`)
+        return this.transportator
             .get(options)
             .then((response: any) => {
                 try {

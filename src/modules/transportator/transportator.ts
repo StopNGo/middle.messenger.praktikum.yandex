@@ -10,6 +10,7 @@ type XMLHttpRequestResponseType = '' | 'arraybuffer' | 'blob' | 'document' | 'js
 
 type Options = {
     method: METHOD;
+    path?: string;
     credentials?: any;
     responseType?: XMLHttpRequestResponseType;
     headers?: any;
@@ -47,7 +48,11 @@ export default class HTTPTransportator {
     }
 
     request(url: string, options: Options = {method: METHOD.GET}, timeout: number = 5000): Promise<XMLHttpRequest> {
-        const {method, data, headers = {}} = options;
+        const {path, method, data, headers = {}} = options;
+
+        if (path) {
+            url += path;
+        }
 
         return new Promise((resolve, reject) => {
             const xhr = new XMLHttpRequest();

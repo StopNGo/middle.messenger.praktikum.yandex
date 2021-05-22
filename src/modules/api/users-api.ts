@@ -1,4 +1,3 @@
-import HTTPTransportator from '../transportator/transportator';
 import {BaseAPI, APIResponse, XHROptions} from './base-api';
 
 export type ProfileData = {
@@ -31,10 +30,11 @@ export class UsersAPI extends BaseAPI {
             headers: {
                 'content-type': 'application/json'
             },
-            data: JSON.stringify(data)
+            data: JSON.stringify(data),
+            path: '/user/profile'
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/user/profile`)
+        return this.transportator
             .put(options)
             .then(
                 (): APIResponse => ({
@@ -58,10 +58,11 @@ export class UsersAPI extends BaseAPI {
     changeAvatar(data: FormData): Promise<APIResponse> {
         const options = {
             ...this.options,
-            data
+            data,
+            path: '/user/profile/avatar'
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/user/profile/avatar`)
+        return this.transportator
             .put(options)
             .then(
                 (response): APIResponse => ({
@@ -85,10 +86,11 @@ export class UsersAPI extends BaseAPI {
             headers: {
                 'content-type': 'application/json'
             },
-            data: JSON.stringify(data)
+            data: JSON.stringify(data),
+            path: '/user/password'
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/user/password`)
+        return this.transportator
             .put(options)
             .then(
                 (): APIResponse => ({
