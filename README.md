@@ -48,6 +48,8 @@ https://praktikum.yandex.ru/middle-frontend/
 
 Заходим сюда:
 https://yappi-chat.netlify.app/
+или сюда:
+https://yappi-chat.herokuapp.com/
 
 Создано 2 пользователя для теста (`login/pass`):
 - `zukko/asd123F`
