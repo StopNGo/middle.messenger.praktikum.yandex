@@ -4,7 +4,7 @@
 **(Yet Another Person to Person Interface)**
 
 ![](https://img.shields.io/badge/version-0.4.0-lightgrey)
-![](https://img.shields.io/badge/ES-2020-green) ![node-current](https://img.shields.io/node/v/npm) ![web-pack]https://img.shields.io/badge/webpack-5.37-green ![npm type definitions](https://img.shields.io/npm/types/typescript)
+![](https://img.shields.io/badge/ES-2020-green) ![node-current](https://img.shields.io/node/v/npm) ![web-pack](https://img.shields.io/badge/webpack-5.37-green) ![npm type definitions](https://img.shields.io/npm/types/typescript)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/b04381de-147a-42f1-bf72-eff2e6dbd7f7/deploy-status)](https://app.netlify.com/sites/yappi-chat/deploys) [![Heroku App Status](http://heroku-shields.herokuapp.com/yappi-chat)](https://yappi-chat.herokuapp.com)
 ------------
 Самостоятельная практическая работа Яндекс.Практики курса мидл фронтенд-разработчика:
