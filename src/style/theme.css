@@ -96,4 +96,6 @@
     --icon-attach: "\f0c6";
     --icon-menu-dots: "\f142";
     --icon-close: "\f00d";
+    --transition: 0.5s ease-in-out;
+    --transition-fast: 0.2s ease-out;
 }

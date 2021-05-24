@@ -1,5 +1,6 @@
 .chat-list {
     position: relative;
+    left: 0;
     display: flex;
     width: 385px;
     height: 100%;
@@ -8,6 +9,7 @@
     background-color: var(--color-dimmed);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-blur);
+    transition: left var(--transition);
 }
 
 .chat-list__scroll-area {
