@@ -100,11 +100,7 @@ class FormRegister extends Form {
                         const form: HTMLFormElement | null = this.getContent().querySelector(this.DOMstrings.avatarForm);
                         if (form) {
                             const formData = new FormData(form);
-                            this._controller.changeAvatar(formData).then(res => {
-                                if (res) {
-                                    console.log(res);
-                                }
-                            });
+                            this._controller.changeAvatar(formData);
                         }
                     }
                 },

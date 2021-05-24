@@ -51,18 +51,13 @@ export default class Connector {
     }
 
     private onOpen = () => {
-        console.log('Подключились!');
         this.fetch();
     };
 
     private onClose = (event: CloseEvent) => {
-        console.log(`Код: ${event.code} | Причина: ${event.reason}`);
-        if (event.wasClean) {
-            console.log('Нормальное отключение');
-        } else {
-            console.warn('Потеря связи');
+        if (!event.wasClean) {
+            // Переподключение
             try {
-                console.log('Переподключение');
                 this.init();
             } catch (error) {
                 console.warn(error);
@@ -111,7 +106,7 @@ export default class Connector {
 
             return true;
         } catch (error) {
-            console.log('Ошибка соединения:', error);
+            console.warn('Ошибка соединения:', error);
         }
     }
 
@@ -158,7 +153,6 @@ export default class Connector {
         if (this._socket) {
             this._socket.close(1000, reason);
             this.destroy();
-            console.log('Чат закрыт');
         }
     }
 }

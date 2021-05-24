@@ -64,7 +64,6 @@ export default class ChatCurrentController {
         const response = await this._chatsAPI.addUserToChat(currentChat, userID);
         if (response.status === 'success') {
             this.getUsersDataFromAPI(currentChat).then(() => {
-                console.log('Пользователь добавлен');
                 return true;
             });
         }
@@ -77,7 +76,6 @@ export default class ChatCurrentController {
         const response = await this._chatsAPI.deleteUserFromChat(currentChat, userID);
         if (response.status === 'success') {
             this.getUsersDataFromAPI(currentChat).then(() => {
-                console.log('Пользователь удален');
                 return true;
             });
         }

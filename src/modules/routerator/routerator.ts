@@ -39,7 +39,6 @@ export class Route {
             return;
         }
 
-        console.log(this._screenClass);
         this._screen.show();
     }
 

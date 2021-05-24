@@ -11,7 +11,6 @@ export default function getDataFromForm(DOMstrings: {[key: string]: string}) {
                         dataOutput[field.dataset.name] = field.value;
                     }
                 });
-                console.log(dataOutput);
             });
         }
     }
