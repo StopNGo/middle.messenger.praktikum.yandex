@@ -39,6 +39,7 @@ export class Route {
             return;
         }
 
+        console.log(this._screenClass);
         this._screen.show();
     }
 
@@ -93,7 +94,7 @@ export class Routerator {
             }
         };
 
-        this.go(window.location.pathname);
+        this._onRoute(window.location.pathname);
     }
 
     setResctrictionPromise(restrictionPromise: Promise<boolean>) {
@@ -101,25 +102,6 @@ export class Routerator {
     }
 
     _onRoute(pathname: string) {
-        let route = this.getRoute(pathname);
-        if (!route) {
-            route = this.getRoute(this._pathname404);
-            pathname = this._pathname404;
-        }
-
-        if (!route) {
-            return;
-        }
-
-        if (this._currentRoute) {
-            this._currentRoute.leave();
-        }
-
-        this._currentRoute = route;
-        route.render();
-    }
-
-    go(pathname: string) {
         let route = this.getRoute(pathname);
         if (!route) {
             route = this.getRoute(this._pathname404);
@@ -135,14 +117,28 @@ export class Routerator {
                         pathname = restriction.redirect;
                     }
 
-                    this.history.pushState({}, '', pathname);
-                    this._onRoute(pathname);
+                    route = this.getRoute(pathname);
+                    if (route) {
+                        this._currentRoute = route;
+                        route.render();
+                        return pathname;
+                    }
                 });
             } else {
-                this.history.pushState({}, '', pathname);
-                this._onRoute(pathname);
+                route = this.getRoute(pathname);
+                if (route) {
+                    this._currentRoute = route;
+                    route.render();
+                    return pathname;
+                }
             }
         }
+    }
+
+    go(pathname: string) {
+        this._currentRoute?.leave();
+        this._onRoute(pathname);
+        this.history.pushState({}, '', pathname);
     }
 
     back() {

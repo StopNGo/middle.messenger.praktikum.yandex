@@ -4,7 +4,7 @@ import Screen from '../../components/screen/main';
 import MainWindow from '../../components/main-window/main';
 import FormProfile from '../../components/form-profile/main';
 
-class LoginScreen extends Screen {
+class ProfileScreen extends Screen {
     formProfile;
     mainWindow;
 
@@ -20,4 +20,4 @@ class LoginScreen extends Screen {
     }
 }
 
-export default LoginScreen;
+export default ProfileScreen;
