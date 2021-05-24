@@ -39,7 +39,7 @@ class ChatCurrent extends Blockator {
                     callback: () => {
                         const userID = prompt(chatCurrentData.chat_body.add_prompt);
                         if (userID) {
-                            this.controller.addUserToChat(Number(sanitize(userID))).then(() => {});
+                            this.controller.addUserToChat(Number(sanitize(userID)));
                         }
                     }
                 },
@@ -49,7 +49,7 @@ class ChatCurrent extends Blockator {
                     callback: () => {
                         const userID = prompt(chatCurrentData.chat_body.delete_prompt);
                         if (userID) {
-                            this.controller.addUserToChat(Number(sanitize(userID))).then(() => {});
+                            this.controller.addUserToChat(Number(sanitize(userID)));
                         }
                     }
                 }

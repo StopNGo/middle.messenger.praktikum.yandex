@@ -110,8 +110,7 @@ export default class ChatCurrentController {
             if (message.type === Connector.MSGTYPE.USER_CONNECTED) {
                 const users = Storator.getData('chat_users');
                 const user = users.findIndex((item: any) => item.id === Number(message.content));
-                const userFirstName = users[user].first_name;
-                const userDisplayName = users[user].display_name;
+                const {first_name: userFirstName, display_name: userDisplayName} = users[user];
                 messageClass = 'chat-message--notification';
                 chatMessageData = {
                     content: `${chatCurrentData.chat_body.user_connected_text} ${userDisplayName === null ? userFirstName : userDisplayName}`,

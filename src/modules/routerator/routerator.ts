@@ -120,6 +120,11 @@ export class Routerator {
                     if (route) {
                         this._currentRoute = route;
                         route.render();
+                        console.log(pathname);
+                        if ((window.location.pathname !== pathname)) {
+                            window.location.pathname = pathname;
+                        }
+
                         return pathname;
                     }
                 });

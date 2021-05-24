@@ -1,4 +1,4 @@
-let errorPageTmpl = `
+const errorPageTmpl = `
 <div class="error-page">
     <div class="error-page__content">
         <h1 class="error-page__error-number">{{error_number}}</h1>

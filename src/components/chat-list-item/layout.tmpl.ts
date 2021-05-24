@@ -1,4 +1,4 @@
-let chatListItemTmpl = `
+const chatListItemTmpl = `
 <div class="chat-list-item {{classes}}">
     <div class="chat-list-item__avatar"><img src="{{avatar}}"></div>
     <div class="chat-list-item__content">

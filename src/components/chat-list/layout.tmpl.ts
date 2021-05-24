@@ -1,4 +1,4 @@
-let chatListTmpl = `
+const chatListTmpl = `
 <section class="chat-list {{classes}}">
     <div class="chat-list__search">
         <input class="chat-list__search-input" type="text" placeholder="Поиск">

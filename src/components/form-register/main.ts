@@ -34,8 +34,8 @@ class FormRegister extends Form {
                     name: 'input',
                     selector: this.DOMstrings.password,
                     callback: () => {
-                        const passwordField: HTMLInputElement | null = document.querySelector(this.DOMstrings.password);
-                        const passwordRepeatField: HTMLInputElement | null = document.querySelector(this.DOMstrings.passwordRepeat);
+                        const passwordField = document.querySelector<HTMLInputElement>(this.DOMstrings.password);
+                        const passwordRepeatField = document.querySelector<HTMLInputElement>(this.DOMstrings.passwordRepeat);
                         if (passwordField && passwordRepeatField) {
                             passwordField.addEventListener('input', () => {
                                 passwordRepeatField.pattern = passwordField.value;

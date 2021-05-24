@@ -1,4 +1,4 @@
-let chatSendTmpl = `
+const chatSendTmpl = `
 <form class="chat-current__send-form">
     <input class="chat-current__send-input" type="text" placeholder="{{placeholder}}" {{pattern}}>
     <button class="chat-current__attach-button"></button>

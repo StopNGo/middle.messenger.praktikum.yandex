@@ -34,8 +34,8 @@ class FormLogin extends Form {
                     selector: this.DOMstrings.form,
                     callback: (event: InputEvent) => {
                         event.preventDefault();
-                        const login: HTMLInputElement | null = document.querySelector(this.DOMstrings.login);
-                        const password: HTMLInputElement | null = document.querySelector(this.DOMstrings.password);
+                        const login = document.querySelector<HTMLInputElement>(this.DOMstrings.login);
+                        const password = document.querySelector<HTMLInputElement>(this.DOMstrings.password);
                         if (login && password) {
                             const data = {
                                 login: login.value,
