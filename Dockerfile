@@ -1,6 +1,6 @@
 # Build stage
-FROM ubuntu:20.04 as build-stage
-RUN apt update && apt install -y nodejs && apt install -y npm
+FROM node:alpine as build-stage
+RUN apk update && apk add nodejs && apk add npm
 
 WORKDIR /app
 COPY . .
@@ -10,9 +10,10 @@ RUN npm run build
 
 
 # Production stage
-FROM ubuntu:20.04 as production-stage
-RUN apt-get update
-RUN apt-get install nginx -y
+FROM node:alpine as production-stage
+RUN apk update
+RUN apk add nginx
+RUN mkdir -p /run/nginx
 
 COPY --from=build-stage /app/dist /var/www/html
 COPY ./.nginx/nginx.conf /etc/nginx/nginx.conf
