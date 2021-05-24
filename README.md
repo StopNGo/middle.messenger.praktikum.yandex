@@ -1,5 +1,5 @@
-#### Ссылка на Pull Request "Sprint 3":  
-https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/2
+#### Ссылка на Pull Request "Sprint 4":  
+https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/4
 
 ### Ветка, в которой делаете задания спринта, должна называться sprint_i, где i - номер спринта. Не переименовывайте её.
 
