@@ -8,7 +8,7 @@ export default class ChatSendController {
     }
 
     sendMessage(message: string) {
-        const connection = this._block.chatCurrent.controller.connection;
+        const connection = this._block.chatCurrent.getConnection();
         if (connection) {
             connection.send(message);
         }

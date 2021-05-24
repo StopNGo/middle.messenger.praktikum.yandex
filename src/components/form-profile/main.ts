@@ -1,3 +1,5 @@
+/* eslint no-undef: 0 */
+
 import formData from './data.json';
 import ProfileController from './controller';
 
@@ -9,7 +11,7 @@ import formTmpl from './layout.tmpl';
 import {ProfileData} from '../../modules/api/users-api';
 
 class FormRegister extends Form {
-    DOMstrings!: {[key: string]: string};
+    DOMstrings!: Record<string, string>;
     private _controller!: ProfileController;
     private _formData: any;
 
@@ -49,36 +51,11 @@ class FormRegister extends Form {
                         if (profileForm && changeData) {
                             const dataFeilds = document.querySelectorAll<HTMLInputElement>(this.DOMstrings.dataField);
                             if (dataFeilds) {
+                                event.preventDefault();
                                 if (changeData.dataset.action === 'change') {
-                                    event.preventDefault();
-                                    dataFeilds.forEach(field => {
-                                        field.readOnly = false;
-                                    });
-                                    changeData.dataset.action = 'save';
-                                    if (changeData.firstElementChild) {
-                                        changeData.firstElementChild.textContent = formData.form_body.save_data_text;
-                                    }
+                                    this.onChange(dataFeilds, changeData);
                                 } else if (changeData.dataset.action === 'save') {
-                                    event.preventDefault();
-                                    const dataOutput: ProfileData | {[key: string]: string} = {};
-                                    dataFeilds.forEach((field: HTMLInputElement) => {
-                                        const dataName = field.dataset.name;
-                                        if (dataName) {
-                                            dataOutput[dataName] = field.value;
-                                        }
-                                    });
-
-                                    this._controller.changeProfile(dataOutput as ProfileData).then(res => {
-                                        if (res) {
-                                            dataFeilds.forEach(field => {
-                                                field.readOnly = true;
-                                            });
-                                            changeData.dataset.action = 'change';
-                                            if (changeData.firstElementChild) {
-                                                changeData.firstElementChild.textContent = formData.form_body.change_data_text;
-                                            }
-                                        }
-                                    });
+                                    this.onSave(dataFeilds, changeData);
                                 }
                             }
                         }
@@ -115,6 +92,38 @@ class FormRegister extends Form {
                     }
                 }
             ]
+        });
+    }
+
+    onChange(dataFeilds: NodeListOf<HTMLInputElement>, changeData: HTMLElement) {
+        dataFeilds.forEach(field => {
+            field.readOnly = false;
+        });
+        changeData.dataset.action = 'save';
+        if (changeData.firstElementChild) {
+            changeData.firstElementChild.textContent = formData.form_body.save_data_text;
+        }
+    }
+
+    onSave(dataFeilds: NodeListOf<HTMLInputElement>, changeData: HTMLElement) {
+        const dataOutput: ProfileData | Record<string, string> = {};
+        dataFeilds.forEach((field: HTMLInputElement) => {
+            const dataName = field.dataset.name;
+            if (dataName) {
+                dataOutput[dataName] = field.value;
+            }
+        });
+
+        this._controller.changeProfile(dataOutput as ProfileData).then(res => {
+            if (res) {
+                dataFeilds.forEach(field => {
+                    field.readOnly = true;
+                });
+                changeData.dataset.action = 'change';
+                if (changeData.firstElementChild) {
+                    changeData.firstElementChild.textContent = formData.form_body.change_data_text;
+                }
+            }
         });
     }
 }

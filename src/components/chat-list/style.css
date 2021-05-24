@@ -81,3 +81,12 @@
     font-size: var(--font-size-small);
     text-align: center;
 }
+
+@media screen and (max-width: 970px) {
+    .chat-list {
+        position: absolute;
+        z-index: 9;
+        left: -415px;
+        max-width: 100vw;
+    }
+}

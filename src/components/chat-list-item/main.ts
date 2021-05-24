@@ -7,7 +7,7 @@ import ChatList from '../../components/chat-list/main';
 import chatListItemTmpl from './layout.tmpl';
 
 class ChatListItem extends Blockator {
-    DOMstrings!: {[key: string]: string};
+    DOMstrings!: Record<string, string>;
     chatList: ChatList;
     private _controller!: ChatListItemController;
 

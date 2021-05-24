@@ -5,7 +5,7 @@ import Form from '../form/main';
 import FormField from '../../components/form-field/main';
 
 class FormLogin extends Form {
-    DOMstrings: {[key: string]: string};
+    DOMstrings: Record<string, string>;
 
     constructor() {
         super(formData.form_body);

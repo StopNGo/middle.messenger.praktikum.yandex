@@ -18,21 +18,21 @@ export default class ChatListController {
     populateChatsList(chatListData: any) {
         const data = Storator.getData('chats');
         const items: any[] = [];
-        data.forEach((item: ChatData, index: number) => {
+        data.forEach(({id, title, unread_count, last_message}: ChatData, index: number) => {
             items[index] = {
-                id: item.id,
-                name: item.title,
-                counter: item.unread_count
+                id: id,
+                name: title,
+                counter: unread_count
             };
 
-            if (item.last_message !== null) {
-                const last_message = JSON.parse(item.last_message);
-                const date = new Date(last_message.time);
+            if (last_message !== null) {
+                const lastMessage = JSON.parse(last_message);
+                const date = new Date(lastMessage.time);
                 items[index] = {
                     ...items[index],
                     time: `${date.getHours() < 10 ? '0' + date.getHours() : date.getHours()}:${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`,
-                    text: last_message.content,
-                    avatar: this._chatsAPI.getResourceURL(last_message.user.avatar)
+                    text: lastMessage.content,
+                    avatar: this._chatsAPI.getResourceURL(lastMessage.user.avatar)
                 };
             }
         });
@@ -45,7 +45,7 @@ export default class ChatListController {
         const response = await this._chatsAPI.addChat(chatName);
         if (response.status === 'success') {
             this._block.deleteNestedBlocksFromTag('items');
-            let block: ChatList = this._block as ChatList;
+            const block: ChatList = this._block as ChatList;
             block.refreshList();
             return true;
         }

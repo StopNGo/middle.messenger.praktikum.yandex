@@ -39,7 +39,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -65,7 +65,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -91,7 +91,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -114,7 +114,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -141,7 +141,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -168,7 +168,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -191,7 +191,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );

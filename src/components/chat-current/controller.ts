@@ -75,6 +75,7 @@ export default class ChatCurrentController {
         const currentChat = Storator.getData('currentChat');
         const response = await this._chatsAPI.deleteUserFromChat(currentChat, userID);
         if (response.status === 'success') {
+            console.log(response);
             this.getUsersDataFromAPI(currentChat).then(() => {
                 return true;
             });

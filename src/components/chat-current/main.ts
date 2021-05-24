@@ -10,7 +10,7 @@ import chatChooseTmpl from './layout-choose.tmpl';
 import {sanitize} from '../../modules/utils/utils';
 
 class ChatCurrent extends Blockator {
-    DOMstrings!: {[key: string]: string};
+    DOMstrings!: Record<string, string>;
     controller!: ChatCurrentController;
     private _chooseBlock!: TBlockator;
 
@@ -49,7 +49,7 @@ class ChatCurrent extends Blockator {
                     callback: () => {
                         const userID = prompt(chatCurrentData.chat_body.delete_prompt);
                         if (userID) {
-                            this.controller.addUserToChat(Number(sanitize(userID)));
+                            this.controller.deleteUserFromChat(Number(sanitize(userID)));
                         }
                     }
                 }
@@ -63,6 +63,10 @@ class ChatCurrent extends Blockator {
 
     clearMessages() {
         this.deleteNestedBlocksFromTag('messages');
+    }
+
+    getConnection() {
+        return this.controller.connection;
     }
 }
 

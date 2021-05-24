@@ -1,4 +1,4 @@
-export default function getDataFromForm(DOMstrings: {[key: string]: string}) {
+export default function getDataFromForm(DOMstrings: Record<string, string>) {
     const form = document.querySelector(DOMstrings.form);
     if (form) {
         const dataFeilds = document.querySelectorAll<HTMLInputElement>(DOMstrings.dataField);
