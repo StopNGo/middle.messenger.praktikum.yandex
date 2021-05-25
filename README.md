@@ -1,3 +1,10 @@
+<<<<<<< HEAD
+=======
+#### Ссылка на Pull Request "Sprint 4":  
+https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/4
+
+### Ветка, в которой делаете задания спринта, должна называться sprint_i, где i - номер спринта. Не переименовывайте её.
+>>>>>>> 62b1333d6bdaebcd43a0e1b7d26479162fa9257b
 
 # YAPPI Chat
 
