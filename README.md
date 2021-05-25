@@ -67,7 +67,7 @@ https://yappi-chat.herokuapp.com/
 ------------
 #### Ссылка на Pull Request "Sprint 4":
 
-https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/3
+https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/5
 
 #### Ссылка на макет в Figma:
 
@@ -96,7 +96,7 @@ https://yappi-chat.herokuapp.com/
 ------------
 #### Ссылка на Pull Request "Sprint 4":
 
-https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/3
+https://github.com/StopNGo/middle.messenger.praktikum.yandex/pull/5
 
 ------------
 Коментарии и пожелания приветствуются!
