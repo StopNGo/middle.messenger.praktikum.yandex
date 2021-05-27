@@ -1,3 +1,4 @@
+import {safelyParseJSON} from '../../modules/utils/utils';
 import Storator from '../../modules/storator/storator';
 import {ChatsAPI, ChatData} from '../../modules/api/chats-api';
 import ChatList from './main';
@@ -18,27 +19,33 @@ export default class ChatListController {
     populateChatsList(chatListData: any) {
         const data = Storator.getData('chats');
         const items: any[] = [];
-        data.forEach(({id, title, unread_count, last_message}: ChatData, index: number) => {
-            items[index] = {
-                id: id,
-                name: title,
-                counter: unread_count
-            };
-
-            if (last_message !== null) {
-                const lastMessage = JSON.parse(last_message);
-                const date = new Date(lastMessage.time);
+        if (data) {
+            data.forEach(({id, title, unread_count, last_message}: ChatData, index: number) => {
                 items[index] = {
-                    ...items[index],
-                    time: `${date.getHours() < 10 ? '0' + date.getHours() : date.getHours()}:${date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()}`,
-                    text: lastMessage.content,
-                    avatar: this._chatsAPI.getResourceURL(lastMessage.user.avatar)
+                    id: id,
+                    name: title,
+                    counter: unread_count
                 };
-            }
-        });
 
-        chatListData.items = items;
-        return chatListData;
+                if (last_message !== null) {
+                    const lastMessage = safelyParseJSON(last_message);
+                    if (lastMessage) {
+                        const date = new Date(lastMessage.time);
+                        items[index] = {
+                            ...items[index],
+                            time: `${date.getHours() < 10 ? '0' + date.getHours() : date.getHours()}:${
+                                date.getMinutes() < 10 ? '0' + date.getMinutes() : date.getMinutes()
+                            }`,
+                            text: lastMessage.content,
+                            avatar: this._chatsAPI.getResourceURL(lastMessage.user.avatar)
+                        };
+                    }
+                }
+            });
+
+            chatListData.items = items;
+            return chatListData;
+        }
     }
 
     async addChat(chatName: string) {

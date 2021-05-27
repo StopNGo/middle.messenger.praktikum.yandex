@@ -43,3 +43,18 @@ export function sleep(ms: number) {
         }, ms);
     });
 }
+
+/*
+ * Избегаем падения при ошибке парсинга
+ */
+export function safelyParseJSON(a: string): any {
+    let parsed;
+
+    try {
+        parsed = JSON.parse(a);
+    } catch (e) {
+        throw new Error(e.message);
+    }
+
+    return parsed;
+}

@@ -1,3 +1,4 @@
+import {safelyParseJSON} from '../../modules/utils/utils';
 import {ChatsAPI} from '../../modules/api/chats-api';
 import EventBusator, {TEventBusator} from '../event-busator/event-busator';
 
@@ -67,8 +68,10 @@ export default class Connector {
 
     private onMessage = (event: MessageEvent & {data: string}) => {
         try {
-            const data = JSON.parse(event.data);
-            this.eventBus().emit(Connector.EVENTS.MESSAGE, data);
+            const data = safelyParseJSON(event.data);
+            if (data) {
+                this.eventBus().emit(Connector.EVENTS.MESSAGE, data);
+            }
         } catch (error) {
             console.error(error.message);
         }
@@ -76,7 +79,7 @@ export default class Connector {
 
     private onError = (event: ErrorEvent) => {
         console.error('Ошибка', event.message);
-    } ;
+    };
 
     async init() {
         try {

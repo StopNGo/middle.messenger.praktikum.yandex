@@ -1,3 +1,4 @@
+import {safelyParseJSON} from '../../modules/utils/utils';
 import {APIResponse} from '../../modules/api/base-api';
 
 export default class Storator {
@@ -19,8 +20,10 @@ export default class Storator {
         const data = localStorage.getItem(name);
         if (data !== null) {
             try {
-                const dataObject = JSON.parse(data);
-                return dataObject;
+                if (data) {
+                    const dataObject = safelyParseJSON(data);
+                    return dataObject;
+                }
             } catch (_) {
                 return data;
             }
