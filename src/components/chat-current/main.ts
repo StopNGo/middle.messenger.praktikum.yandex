@@ -13,6 +13,7 @@ class ChatCurrent extends Blockator {
     DOMstrings!: Record<string, string>;
     controller!: ChatCurrentController;
     private _chooseBlock!: TBlockator;
+    chatSend!: ChatSend;
 
     constructor(props?: {}, tmpl?: string) {
         super('div', props, tmpl || chatCurrentTmpl);
@@ -20,9 +21,10 @@ class ChatCurrent extends Blockator {
     }
 
     componentDidMount() {
+        this.chatSend = new ChatSend(this);
         this._chooseBlock = new Blockator('div', {choose_message: chatCurrentData.chat_body.choose_message}, chatChooseTmpl);
         this.addNestedBlocksToTag('messages', [this._chooseBlock]);
-        this.addNestedBlocksToTag('send', [new ChatSend(this)]);
+        this.addNestedBlocksToTag('send', [this.chatSend]);
 
         this.controller = new ChatCurrentController(this);
 

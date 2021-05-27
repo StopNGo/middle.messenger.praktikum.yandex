@@ -61,6 +61,14 @@ input:focus {
     outline: none;
 }
 
+input[disabled] {
+    background-color: var(--color-dimmed);
+}
+
+input[disabled]::placeholder {
+    color: transparent;
+}
+
 label {
     display: inline-block;
     padding: 0 0 5px 14px;

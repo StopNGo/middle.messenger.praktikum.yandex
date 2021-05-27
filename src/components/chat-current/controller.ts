@@ -3,16 +3,17 @@ import chatCurrentData from './data.json';
 import Storator from '../../modules/storator/storator';
 import Connector, {TMessage} from '../../modules/connector/connector';
 import {ChatsAPI} from '../../modules/api/chats-api';
-import Blockator, {TBlockator} from '../../modules/blockator/blockator';
+import Blockator from '../../modules/blockator/blockator';
 import ChatMessage from '../../components/chat-message/main';
 import {sanitize} from '../../modules/utils/utils';
+import ChatCurrent from './main';
 
 export default class ChatCurrentController {
-    private _block: TBlockator;
+    private _block: ChatCurrent;
     private _chatsAPI: ChatsAPI;
     connection!: Connector;
 
-    constructor(block: TBlockator) {
+    constructor(block: ChatCurrent) {
         this._block = block;
         this._chatsAPI = new ChatsAPI();
     }
@@ -49,6 +50,7 @@ export default class ChatCurrentController {
             this.connection = new Connector(profile.id, chat.id);
             this.connection.addOnMeassageAction((data: any) => {
                 if (Array.isArray(data)) {
+                    this._block.chatSend.switchForm();
                     this._block.deleteNestedBlocksFromTag('messages');
                     data.forEach(message => this.addMessage(message, true));
                 } else {
