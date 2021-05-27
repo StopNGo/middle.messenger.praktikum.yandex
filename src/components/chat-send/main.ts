@@ -70,7 +70,9 @@ class ChatSend extends Blockator {
 
         elements.forEach(el => {
             if (el) {
-                el.disabled = !el.disabled;
+                if (el.disabled) {
+                    el.disabled = false;
+                }
             }
         });
     }
