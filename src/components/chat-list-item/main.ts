@@ -3,14 +3,15 @@ import './style.css';
 import ChatListItemController from './controller';
 
 import Blockator from '../../modules/blockator/blockator';
+import ChatList from '../../components/chat-list/main';
 import chatListItemTmpl from './layout.tmpl';
 
 class ChatListItem extends Blockator {
-    DOMstrings: {[key: string]: string};
-    chatList: any;
-    private _controller: ChatListItemController;
+    DOMstrings!: Record<string, string>;
+    chatList: ChatList;
+    private _controller!: ChatListItemController;
 
-    constructor(chatList: any, props: {}, tmpl?: string) {
+    constructor(chatList: ChatList, props: {}, tmpl?: string) {
         super('div', props, tmpl || chatListItemTmpl);
         this.chatList = chatList;
     }

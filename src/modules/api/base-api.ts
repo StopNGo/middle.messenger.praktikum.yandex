@@ -1,3 +1,5 @@
+import HTTPTransportator from '../transportator/transportator';
+
 export type APIResponse = {
     status: 'success' | 'failed';
     data?: unknown;
@@ -10,6 +12,11 @@ export type XHROptions = {
 
 export class BaseAPI {
     static HOST: string = 'https://ya-praktikum.tech/api/v2';
+    transportator: HTTPTransportator;
+
+    constructor() {
+        this.transportator = new HTTPTransportator(BaseAPI.HOST);
+    }
 
     create() {
         throw new Error('Not implemented');

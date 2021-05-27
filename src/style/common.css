@@ -6,6 +6,7 @@ html {
 *::before,
 *::after {
     box-sizing: inherit;
+    transition: all var(--transition-fast);
 }
 
 *::-webkit-scrollbar {
@@ -58,6 +59,14 @@ input {
 input:focus {
     box-shadow: var(--inner-shadow-2), var(--shadow-blur);
     outline: none;
+}
+
+input[disabled] {
+    background-color: var(--color-dimmed);
+}
+
+input[disabled]::placeholder {
+    color: transparent;
 }
 
 label {

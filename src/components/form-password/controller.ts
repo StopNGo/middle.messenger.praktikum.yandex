@@ -14,9 +14,7 @@ export default class LoginController {
 
     async changePassword(data: PasswordData) {
         const response = await this._usersAPI.changePassword(data);
-        console.log(formData);
         if (response.status === 'success') {
-            console.log(response);
             this._block.setProps({confirmation: formData.form_body.confirmation_text});
             this._block.setProps({error: ''});
             const form = this._block.getContent().querySelector('form');

@@ -10,9 +10,10 @@ import chatChooseTmpl from './layout-choose.tmpl';
 import {sanitize} from '../../modules/utils/utils';
 
 class ChatCurrent extends Blockator {
-    DOMstrings: {[key: string]: string};
-    controller: ChatCurrentController;
-    private _chooseBlock: TBlockator;
+    DOMstrings!: Record<string, string>;
+    controller!: ChatCurrentController;
+    private _chooseBlock!: TBlockator;
+    chatSend!: ChatSend;
 
     constructor(props?: {}, tmpl?: string) {
         super('div', props, tmpl || chatCurrentTmpl);
@@ -20,9 +21,10 @@ class ChatCurrent extends Blockator {
     }
 
     componentDidMount() {
+        this.chatSend = new ChatSend(this);
         this._chooseBlock = new Blockator('div', {choose_message: chatCurrentData.chat_body.choose_message}, chatChooseTmpl);
         this.addNestedBlocksToTag('messages', [this._chooseBlock]);
-        this.addNestedBlocksToTag('send', [new ChatSend(this)]);
+        this.addNestedBlocksToTag('send', [this.chatSend]);
 
         this.controller = new ChatCurrentController(this);
 
@@ -39,7 +41,7 @@ class ChatCurrent extends Blockator {
                     callback: () => {
                         const userID = prompt(chatCurrentData.chat_body.add_prompt);
                         if (userID) {
-                            this.controller.addUserToChat(Number(sanitize(userID))).then(() => {});
+                            this.controller.addUserToChat(Number(sanitize(userID)));
                         }
                     }
                 },
@@ -49,7 +51,7 @@ class ChatCurrent extends Blockator {
                     callback: () => {
                         const userID = prompt(chatCurrentData.chat_body.delete_prompt);
                         if (userID) {
-                            this.controller.addUserToChat(Number(sanitize(userID))).then(() => {});
+                            this.controller.deleteUserFromChat(Number(sanitize(userID)));
                         }
                     }
                 }
@@ -63,6 +65,10 @@ class ChatCurrent extends Blockator {
 
     clearMessages() {
         this.deleteNestedBlocksFromTag('messages');
+    }
+
+    getConnection() {
+        return this.controller.connection;
     }
 }
 

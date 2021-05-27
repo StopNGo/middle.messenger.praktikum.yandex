@@ -1,4 +1,4 @@
-let formLoginTmpl = `
+const formLoginTmpl = `
     <form action="{{submit_button_link}}" class="form {{class}}">
         <h2 class="form__title {{class}}__title">{{title}}</h2>
         <fields></fields>

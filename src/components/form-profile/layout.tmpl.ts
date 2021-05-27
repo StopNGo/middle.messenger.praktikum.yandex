@@ -1,4 +1,4 @@
-let profileTmpl = `
+const profileTmpl = `
 <div class="form profile">
     <div class="profile__content">
         <div class="profile__avatar">

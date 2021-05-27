@@ -1,4 +1,4 @@
-let formFieldTmpl = `
+const formFieldTmpl = `
 <div class="form__field {{class}}">
     <label class="form__label {{class}}-label">{{label}}</label>
     <input class="form__input {{class}}-input" data-name="{{data_name}}" type="{{type}}"

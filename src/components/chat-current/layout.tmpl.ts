@@ -1,4 +1,4 @@
-let chatListItemTmpl = `
+const chatListItemTmpl = `
 <section class="chat-current">
     <div class="chat-current__name">
         <h2>{{name}}</h2>
@@ -8,7 +8,7 @@ let chatListItemTmpl = `
         </div>
     </div>
     <div class="chat-current__messages">
-        <messages>Выберите чат</messages>
+        <messages></messages>
     </div>
     <send></send>
 </section>

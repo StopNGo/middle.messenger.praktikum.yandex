@@ -21,7 +21,7 @@ export default class ProfileController {
     populateFormData(formData: any) {
         const data = Storator.getData('profile');
         this._block.props.id = data.id;
-        Object.entries(data as {[key: string]: string}).forEach(([key, value]) => {
+        Object.entries(data as Record<string, string>).forEach(([key, value]) => {
             const index = formData.fields.findIndex((el: any) => el.data_name === key);
             if (index >= 0) {
                 if (value === null) {

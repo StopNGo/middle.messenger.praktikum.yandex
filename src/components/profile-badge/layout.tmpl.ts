@@ -1,4 +1,4 @@
-let profileBadgeTmpl = `
+const profileBadgeTmpl = `
 <div class="profile-badge">
     <a href="{{link}}">
         <div class="profile-badge__avatar"><img src="{{avatar}}"></div>

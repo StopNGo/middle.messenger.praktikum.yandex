@@ -5,7 +5,7 @@ import Form from '../form/main';
 import FormField from '../form-field/main';
 
 class FormPassword extends Form {
-    DOMstrings: {[key: string]: string};
+    DOMstrings!: Record<string, string>;
 
     constructor() {
         super(formData.form_body);
@@ -31,8 +31,8 @@ class FormPassword extends Form {
                     name: 'input',
                     selector: this.DOMstrings.password,
                     callback: () => {
-                        const passwordField: HTMLInputElement | null = document.querySelector(this.DOMstrings.password);
-                        const passwordRepeatField: HTMLInputElement | null = document.querySelector(this.DOMstrings.passwordRepeat);
+                        const passwordField = document.querySelector<HTMLInputElement>(this.DOMstrings.password);
+                        const passwordRepeatField = document.querySelector<HTMLInputElement>(this.DOMstrings.passwordRepeat);
                         if (passwordField && passwordRepeatField) {
                             passwordField.addEventListener('input', () => {
                                 passwordRepeatField.pattern = passwordField.value;
@@ -45,9 +45,9 @@ class FormPassword extends Form {
                     selector: this.DOMstrings.form,
                     callback: (event: InputEvent) => {
                         event.preventDefault();
-                        const passwordOld: HTMLInputElement | null = document.querySelector(this.DOMstrings.passwordOld);
-                        const password: HTMLInputElement | null = document.querySelector(this.DOMstrings.password);
-                        const passwordRepeat: HTMLInputElement | null = document.querySelector(this.DOMstrings.passwordRepeat);
+                        const passwordOld = document.querySelector<HTMLInputElement>(this.DOMstrings.passwordOld);
+                        const password = document.querySelector<HTMLInputElement>(this.DOMstrings.password);
+                        const passwordRepeat = document.querySelector<HTMLInputElement>(this.DOMstrings.passwordRepeat);
                         if (passwordOld && password && passwordRepeat) {
                             const data = {
                                 oldPassword: passwordOld.value,

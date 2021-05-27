@@ -3,14 +3,16 @@ import {TBlockator} from '../../modules/blockator/blockator';
 
 export default class LoginController {
     private _block: TBlockator;
+    private _authAPI: AuthAPI;
 
     constructor(block: TBlockator) {
         this._block = block;
+        this._authAPI = new AuthAPI();
     }
 
     async register(formData: RegisterData) {
         try {
-            new AuthAPI().register(formData).then(response => {
+            this._authAPI.register(formData).then(response => {
                 const res = response;
                 if (res.status === 'success') {
                     document.location.reload();

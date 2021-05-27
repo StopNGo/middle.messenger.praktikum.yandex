@@ -3,9 +3,11 @@ import {TBlockator} from '../../modules/blockator/blockator';
 
 export default class LoginController {
     private _block: TBlockator;
+    private _authAPI: AuthAPI;
 
     constructor(block: TBlockator) {
         this._block = block;
+        this._authAPI = new AuthAPI();
     }
 
     async login(formData: LoginData) {
@@ -15,14 +17,14 @@ export default class LoginController {
                 password: formData.password
             };
 
-            new AuthAPI().login(data).then(response => {
-                const res = response;
-                if (res.status === 'success') {
+            this._authAPI
+                .login(data)
+                .then(() => {
                     document.location.reload();
-                } else {
-                    this._block.setProps({error: response.reason});
-                }
-            });
+                })
+                .catch(({reason}) => {
+                    this._block.setProps({error: reason});
+                });
         } catch (error) {
             console.warn(error);
         }

@@ -1,4 +1,3 @@
-import HTTPTransportator from '../transportator/transportator';
 import {BaseAPI, APIResponse, XHROptions} from './base-api';
 
 export type ChatData = {
@@ -24,10 +23,11 @@ export class ChatsAPI extends BaseAPI {
 
     getChats(): Promise<APIResponse> {
         const options = {
-            ...this.options
+            ...this.options,
+            path: '/chats'
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/chats`)
+        return this.transportator
             .get(options)
             .then(
                 (response): APIResponse => ({
@@ -39,7 +39,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -50,10 +50,11 @@ export class ChatsAPI extends BaseAPI {
             ...this.options,
             data: JSON.stringify({
                 title: name
-            })
+            }),
+            path: '/chats'
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/chats`)
+        return this.transportator
             .post(options)
             .then(
                 (): APIResponse => ({
@@ -64,7 +65,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -75,10 +76,11 @@ export class ChatsAPI extends BaseAPI {
             ...this.options,
             data: JSON.stringify({
                 chatId: chatID
-            })
+            }),
+            path: '/chats'
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/chats`)
+        return this.transportator
             .delete(options)
             .then(
                 (): APIResponse => ({
@@ -89,7 +91,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -97,9 +99,10 @@ export class ChatsAPI extends BaseAPI {
 
     getToken(chatID: number): Promise<APIResponse> {
         const options = {
-            ...this.options
+            ...this.options,
+            path: `/chats/token/${chatID}`
         };
-        return new HTTPTransportator(`${BaseAPI.HOST}/chats/token/${chatID}`)
+        return this.transportator
             .post(options)
             .then(
                 (response): APIResponse => ({
@@ -111,7 +114,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -123,10 +126,11 @@ export class ChatsAPI extends BaseAPI {
             data: JSON.stringify({
                 users: [userID],
                 chatId: chatID
-            })
+            }),
+            path: '/chats/users'
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/chats/users`)
+        return this.transportator
             .put(options)
             .then(
                 (): APIResponse => ({
@@ -137,7 +141,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -149,10 +153,11 @@ export class ChatsAPI extends BaseAPI {
             data: JSON.stringify({
                 users: [userID],
                 chatId: chatID
-            })
+            }),
+            path: '/chats/users'
         };
 
-        return new HTTPTransportator(`${BaseAPI.HOST}/chats/users`)
+        return this.transportator
             .delete(options)
             .then(
                 (): APIResponse => ({
@@ -163,7 +168,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );
@@ -171,9 +176,10 @@ export class ChatsAPI extends BaseAPI {
 
     getUsers(chatID: number): Promise<APIResponse> {
         const options = {
-            ...this.options
+            ...this.options,
+            path: `/chats/${chatID}/users`
         };
-        return new HTTPTransportator(`${BaseAPI.HOST}/chats/${chatID}/users`)
+        return this.transportator
             .get(options)
             .then(
                 (response): APIResponse => ({
@@ -185,7 +191,7 @@ export class ChatsAPI extends BaseAPI {
                 (err): APIResponse => {
                     return {
                         status: 'failed',
-                        reason: err.reason
+                        reason: err?.reason
                     };
                 }
             );

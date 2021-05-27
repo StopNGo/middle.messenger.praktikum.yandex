@@ -1,3 +1,4 @@
+import {safelyParseJSON} from '../../modules/utils/utils';
 import {ChatsAPI} from '../../modules/api/chats-api';
 import EventBusator, {TEventBusator} from '../event-busator/event-busator';
 
@@ -51,18 +52,13 @@ export default class Connector {
     }
 
     private onOpen = () => {
-        console.log('Подключились!');
         this.fetch();
     };
 
     private onClose = (event: CloseEvent) => {
-        console.log(`Код: ${event.code} | Причина: ${event.reason}`);
-        if (event.wasClean) {
-            console.log('Нормальное отключение');
-        } else {
-            console.warn('Потеря связи');
+        if (!event.wasClean) {
+            // Переподключение
             try {
-                console.log('Переподключение');
                 this.init();
             } catch (error) {
                 console.warn(error);
@@ -72,8 +68,10 @@ export default class Connector {
 
     private onMessage = (event: MessageEvent & {data: string}) => {
         try {
-            const data = JSON.parse(event.data);
-            this.eventBus().emit(Connector.EVENTS.MESSAGE, data);
+            const data = safelyParseJSON(event.data);
+            if (data) {
+                this.eventBus().emit(Connector.EVENTS.MESSAGE, data);
+            }
         } catch (error) {
             console.error(error.message);
         }
@@ -107,11 +105,11 @@ export default class Connector {
             this._socket.addEventListener('open', this.onOpen);
             this._socket.addEventListener('close', this.onClose);
             this._socket.addEventListener('message', this.onMessage);
-            this._socket.addEventListener('error', this.onError);
+            this._socket.addEventListener('error', this.onError as (e: Event) => void);
 
             return true;
         } catch (error) {
-            console.log('Ошибка соединения:', error);
+            console.warn('Ошибка соединения:', error);
         }
     }
 
@@ -149,7 +147,7 @@ export default class Connector {
             this._socket.removeEventListener('open', this.onOpen);
             this._socket.removeEventListener('close', this.onClose);
             this._socket.removeEventListener('message', this.onMessage);
-            this._socket.removeEventListener('error', this.onError);
+            this._socket.removeEventListener('error', this.onError as (e: Event) => void);
             this._socket = null;
         }
     }
@@ -158,7 +156,6 @@ export default class Connector {
         if (this._socket) {
             this._socket.close(1000, reason);
             this.destroy();
-            console.log('Чат закрыт');
         }
     }
 }

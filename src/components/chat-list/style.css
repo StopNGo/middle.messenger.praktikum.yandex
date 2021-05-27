@@ -1,5 +1,6 @@
 .chat-list {
     position: relative;
+    left: 0;
     display: flex;
     width: 385px;
     height: 100%;
@@ -8,6 +9,7 @@
     background-color: var(--color-dimmed);
     border-radius: var(--border-radius);
     box-shadow: var(--shadow-blur);
+    transition: left var(--transition);
 }
 
 .chat-list__scroll-area {
@@ -80,4 +82,13 @@
     color: var(--color-text-dimmed);
     font-size: var(--font-size-small);
     text-align: center;
+}
+
+@media screen and (max-width: 970px) {
+    .chat-list {
+        position: absolute;
+        z-index: 9;
+        left: -415px;
+        max-width: 100vw;
+    }
 }

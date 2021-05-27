@@ -8,7 +8,7 @@ import {sanitize, sleep} from '../../modules/utils/utils';
 import chatSendTmpl from './layout.tmpl';
 
 class ChatSend extends Blockator {
-    DOMstrings: {[key: string]: string};
+    DOMstrings!: Record<string, string>;
     private _controller: ChatSendController;
     chatCurrent: any;
 
@@ -20,6 +20,11 @@ class ChatSend extends Blockator {
     }
 
     componentDidMount() {
+        this.DOMstrings = {
+            input: '.chat-current__send-input',
+            send: '.chat-current__send-button'
+        };
+
         this.setProps({
             events: [
                 {
@@ -30,7 +35,7 @@ class ChatSend extends Blockator {
                         sleep(5).then(() => {
                             if (event.target as any) {
                                 const target = event.target as HTMLElement;
-                                const input = target.querySelector('.chat-current__send-input') as HTMLInputElement;
+                                const input = target.querySelector<HTMLInputElement>(this.DOMstrings.input);
                                 if (input && input.value !== '') {
                                     this._controller.sendMessage(sanitize(input.value));
                                     input.value = '';
@@ -54,6 +59,21 @@ class ChatSend extends Blockator {
                     }
                 }
             ]
+        });
+    }
+
+    switchForm() {
+        const elements = [
+            this.getContent().querySelector<HTMLInputElement>(this.DOMstrings.input),
+            this.getContent().querySelector<HTMLInputElement>(this.DOMstrings.send)
+        ];
+
+        elements.forEach(el => {
+            if (el) {
+                if (el.disabled) {
+                    el.disabled = false;
+                }
+            }
         });
     }
 }

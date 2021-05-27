@@ -3,16 +3,17 @@ import chatCurrentData from './data.json';
 import Storator from '../../modules/storator/storator';
 import Connector, {TMessage} from '../../modules/connector/connector';
 import {ChatsAPI} from '../../modules/api/chats-api';
-import Blockator, {TBlockator} from '../../modules/blockator/blockator';
+import Blockator from '../../modules/blockator/blockator';
 import ChatMessage from '../../components/chat-message/main';
 import {sanitize} from '../../modules/utils/utils';
+import ChatCurrent from './main';
 
 export default class ChatCurrentController {
-    private _block: TBlockator;
+    private _block: ChatCurrent;
     private _chatsAPI: ChatsAPI;
-    connection: Connector;
+    connection!: Connector;
 
-    constructor(block: TBlockator) {
+    constructor(block: ChatCurrent) {
         this._block = block;
         this._chatsAPI = new ChatsAPI();
     }
@@ -49,6 +50,7 @@ export default class ChatCurrentController {
             this.connection = new Connector(profile.id, chat.id);
             this.connection.addOnMeassageAction((data: any) => {
                 if (Array.isArray(data)) {
+                    this._block.chatSend.switchForm();
                     this._block.deleteNestedBlocksFromTag('messages');
                     data.forEach(message => this.addMessage(message, true));
                 } else {
@@ -64,7 +66,6 @@ export default class ChatCurrentController {
         const response = await this._chatsAPI.addUserToChat(currentChat, userID);
         if (response.status === 'success') {
             this.getUsersDataFromAPI(currentChat).then(() => {
-                console.log('Пользователь добавлен');
                 return true;
             });
         }
@@ -77,7 +78,6 @@ export default class ChatCurrentController {
         const response = await this._chatsAPI.deleteUserFromChat(currentChat, userID);
         if (response.status === 'success') {
             this.getUsersDataFromAPI(currentChat).then(() => {
-                console.log('Пользователь удален');
                 return true;
             });
         }
@@ -112,8 +112,7 @@ export default class ChatCurrentController {
             if (message.type === Connector.MSGTYPE.USER_CONNECTED) {
                 const users = Storator.getData('chat_users');
                 const user = users.findIndex((item: any) => item.id === Number(message.content));
-                const userFirstName = users[user].first_name;
-                const userDisplayName = users[user].display_name;
+                const {first_name: userFirstName, display_name: userDisplayName} = users[user];
                 messageClass = 'chat-message--notification';
                 chatMessageData = {
                     content: `${chatCurrentData.chat_body.user_connected_text} ${userDisplayName === null ? userFirstName : userDisplayName}`,

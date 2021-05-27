@@ -1,4 +1,4 @@
-let chatChooseTmpl = `
+const chatChooseTmpl = `
 <div class="chat-current__choose">{{choose_message}}</div>
 `;
 
